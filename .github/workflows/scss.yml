@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Sass
-        uses: sass/dart-sass@v1
+        uses: sass/setup-sass@v1
 
       - name: Compile SCSS
         run: sass scss/styles.scss css/processed.css
