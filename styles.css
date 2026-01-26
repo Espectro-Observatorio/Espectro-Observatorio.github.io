@@ -470,7 +470,7 @@ ul.galeria li:target {
 
 @media (max-width: 768 px) {
   
-  footer div {
+  .mitad {
     width: 100%;
   }
   
