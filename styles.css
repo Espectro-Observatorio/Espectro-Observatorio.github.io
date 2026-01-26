@@ -237,7 +237,7 @@ footer div {
   width: 50%;
   padding: 1%;
   float: left;
-  border-left: 1px solid var(--cb2t); }
+  /*border-left: 1px solid var(--cb2t); }*/
 
 footer div ul {
   list-style-type: none; }
