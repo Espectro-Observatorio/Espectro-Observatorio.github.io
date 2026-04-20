@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agrupación CEGMA - FCAGLP</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="stylesTE.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="https://www.fcaglp.unlp.edu.ar/" target="_blank" class="fcaglp-link">
+            <i class="fa-solid fa-building-columns"></i> <span class="hide-mobile">FCAGLP Oficial</span>
+        </a>
+        
+        <button class="nav-toggle" aria-label="Abrir menú">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <ul class="nav-links">
+            <li><a href="inicio.html">Inicio</a></li>
+            <li><a href="nosotros.html">Quiénes Somos</a></li>
+            <li><a href="cegma.html">El CEGMA</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-btn">Proyectos <i class="fa-solid fa-caret-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="proyectos-mini.html">Mini Proyectos</a>
+                    <a href="proyectos-cumplidos.html">Cumplidos</a>
+                    <a href="proyectos-futuros.html">Futuros</a>
+                </div>
+            </li>
+            <li><a href="recursos.html">Recursos</a></li>
+            <li><a href="espacio.html" class="destacado"><i class="fa-solid fa-user-graduate"></i> Tu Espacio</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content animate-on-scroll">
+            <h1>Espectro</h1>
+            <p>Agrupación independiente de la Facultad de Ciencias Astronómicas y Geofísicas</p>
+            <a href="#noticias" class="btn-main">Ver Noticias</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2 class="animate-on-scroll">Mi Espacio (Modo de prueba)</h2>
+        <p class="animate-on-scroll">Acá vas a poder gestionar tu carrera en el futuro.</p>
+
+        <div class="dashboard-layout animate-on-scroll">
+            <aside class="sidebar">
+                <ul>
+                    <li><a href="#"><i class="fa-solid fa-calendar-days"></i> Mi Calendario</a></li>
+                    <li><a href="#"><i class="fa-solid fa-list-check"></i> Materias en curso</a></li>
+                    <li><a href="#"><i class="fa-solid fa-graduation-cap"></i> Historia Académica</a></li>
+                    <li><a href="#"><i class="fa-solid fa-gear"></i> Configuración</a></li>
+                </ul>
+            </aside>
+
+            <section class="dashboard-content">
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <p>Promedio</p>
+                        <h3>8.50</h3>
+                    </div>
+                    <div class="stat-box">
+                        <p>Materias Aprobadas</p>
+                        <h3>14</h3>
+                    </div>
+                    <div class="stat-box">
+                        <p>Progreso Carrera</p>
+                        <h3>35%</h3>
+                    </div>
+                </div>
+
+                <div class="card" style="text-align: left;">
+                    <h3><i class="fa-solid fa-triangle-exclamation" style="color: var(--primary);"></i> ¿Qué puedo cursar?</h3>
+                    <p>Según tu plan de estudios, las materias habilitadas para el próximo cuatrimestre son:</p>
+                    <ul>
+                        <li>Física III</li>
+                        <li>Análisis Matemático II</li>
+                        <li>Astronomía General</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="social-icons">
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-solid fa-link"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+        <p>&copy; 2026 Espectro</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

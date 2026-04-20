@@ -1,0 +1,319 @@
+/* --- VARIABLES Y BASE --- */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@700;900&display=swap');
+
+:root {
+    --primary: #f97316; /* Naranja */
+    --black: #000000;
+    --dark: #1a1a1a;
+    --white: #ffffff;
+    --gray: #f4f4f4;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--white);
+    color: var(--black);
+    overflow-x: hidden;
+}
+
+/* --- FOOTER REDISEÑADO --- */
+footer {
+    background-color: var(--dark);
+    color: var(--white);
+    padding: 3rem 20px 2rem 20px;
+    border-top: 5px solid var(--primary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 5rem;
+}
+
+.footer-logo {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+    color: var(--primary);
+    letter-spacing: 1px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: var(--white);
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    background-color: var(--primary);
+    transform: translateY(-5px); /* Pequeño salto hacia arriba */
+    color: var(--white);
+}
+
+.footer-copy {
+    font-size: 0.9rem;
+    color: #aaaaaa;
+}
+
+/* --- SELECCIÓN DE TEXTO --- */
+::selection {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+/* --- BARRA DE DESPLAZAMIENTO (SCROLLBAR) --- */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: var(--dark);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #d95e0b; /* Un naranja apenas más oscuro */
+}
+
+/* --- DROPDOWN PROYECTOS --- */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none; /* Oculto por defecto, se maneja con JS */
+    position: absolute;
+    background-color: var(--dark);
+    min-width: 180px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.3);
+    z-index: 1;
+    border-radius: 5px;
+    top: 100%;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.dropdown-content a {
+    color: var(--white);
+    padding: 12px 20px;
+    display: block;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.dropdown-content a:hover {
+    background-color: var(--primary) !important;
+    color: var(--white) !important;
+}
+
+.dropdown-content.show {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+/* --- ESTILO DE ENLACES --- */
+/* Quitamos el subrayado feo de base a todo */
+a {
+    text-decoration: none;
+}
+
+/* Solo los enlaces que están DENTRO de párrafos tendrán el estilo naranja y subrayado */
+p a, .card p a {
+    color: var(--primary);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+p a:hover, .card p a:hover {
+    color: var(--black);
+}
+
+/* --- CORRECCIÓN ENLACES VISITADOS (TARJETAS) --- */
+.card, .card:link, .card:visited, .card:active {
+    color: var(--black); /* Fuerza a que el texto sea siempre negro/oscuro */
+    text-decoration: none;
+}
+
+/* Opcional: Que el título de la tarjeta se ponga naranja al pasar el mouse */
+.card h3 {
+    transition: color 0.3s ease;
+}
+
+.card:hover h3 {
+    color: var(--primary);
+}
+
+/* --- NAVBAR RESPONSIVE --- */
+.navbar {
+    background: var(--black);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.nav-links a:hover, .nav-links a.destacado { color: var(--primary); }
+
+.nav-toggle {
+    display: none; /* Oculto en desktop */
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.fcaglp-link {
+    color: var(--white);
+    text-decoration: none;
+    border: 1px solid var(--primary);
+    padding: 5px 12px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+}
+
+/* --- HERO --- */
+.hero {
+    height: 70vh;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('assets/facultad.jpg') center/cover fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+}
+
+.hero h1 { font-family: 'Roboto', sans-serif; font-size: 3rem; margin-bottom: 1rem; }
+
+/* --- CONTENEDORES Y GRIDS --- */
+.container { max-width: 1100px; margin: auto; padding: 4rem 20px; }
+
+.grid-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: var(--gray);
+    padding: 2rem;
+    border-radius: 10px;
+    transition: 0.3s;
+    border-left: 5px solid var(--black);
+}
+
+.card:hover { transform: translateY(-10px); border-left-color: var(--primary); }
+
+/* --- NUEVO ESTILO PROTAGÓNICO PARA LOS ÍCONOS --- */
+.card i {
+    font-size: 2.5rem; /* Tamaño del ícono en sí */
+    color: var(--primary); /* Color naranja para el ícono */
+    background-color: var(--black); /* Fondo negro del contenedor */
+    width: 80px; /* Ancho del cuadradito */
+    height: 80px; /* Alto del cuadradito */
+    display: inline-flex; /* Esto permite centrar el ícono perfectamente */
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px; /* Bordes bien redondeados. Si preferís un círculo perfecto, cambiá a 50% */
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Una sombrita sutil para que resalte */
+    transition: all 0.3s ease;
+}
+
+/* Efecto al pasar el mouse por la tarjeta entera */
+.card:hover i {
+    transform: scale(1.1) rotate(5deg); /* Se agranda un poquito y gira apenitas para darle vida */
+    background-color: var(--primary); /* El fondo pasa a naranja */
+    color: var(--white); /* El ícono pasa a blanco */
+}
+
+/* --- MEDIA QUERIES (EL CORAZÓN DEL RESPONSIVE) --- */
+@media (max-width: 992px) {
+    .nav-toggle { display: block; }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--black);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 25px;
+        display: none; /* Se activa con JS */
+    }
+
+    .nav-links.active { display: flex; }
+
+    .hero h1 { font-size: 2.2rem; }
+    
+    .hide-mobile { display: none; } /* Oculta texto largo en botones chicos */
+}
+
+
+/* --- RESPONSIVE GENERAL Y CELULARES --- */
+@media (max-width: 992px) {
+    /* ... (tu código anterior de .nav-links active) ... */
+
+    /* El dropdown en el celular empuja hacia abajo, no flota */
+    .dropdown-content {
+        position: relative;
+        box-shadow: none;
+        background: rgba(255, 255, 255, 0.05); /* Un gris super transparente */
+        margin-top: 5px;
+    }
+}
+
+/* Celulares más chicos y "Tu Espacio" */
+@media (max-width: 768px) {
+    /* Arreglo para Tu Espacio */
+    .dashboard-layout {
+        flex-direction: column; /* Pasa de estar uno al lado del otro a apilarse */
+    }
+    
+    .sidebar {
+        width: 100%; /* El menú lateral ocupa todo el ancho */
+        margin-bottom: 20px;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr; /* Fuerza a que los bloques de progreso sean de 1 sola columna */
+        gap: 15px;
+    }
+}
+
+/* --- ANIMACIONES --- */
+.animate-on-scroll { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
+.animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
