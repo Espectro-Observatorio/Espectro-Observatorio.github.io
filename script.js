@@ -1,4 +1,29 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // --- LÓGICA DEL MODO OSCURO ---
+    const btnTema = document.getElementById("btn-tema");
+    if (!btnTema) return; // Seguridad por si la página no tiene el botón
+
+    const iconoTema = btnTema.querySelector("i");
+    const body = document.body;
+
+    // Sincronizamos el ícono con el estado actual del body
+    if (body.classList.contains("modo-oscuro")) {
+        iconoTema.classList.replace("fa-moon", "fa-sun");
+    }
+
+    btnTema.addEventListener("click", () => {
+        const esOscuro = body.classList.toggle("modo-oscuro");
+        
+        if (esOscuro) {
+            iconoTema.classList.replace("fa-moon", "fa-sun");
+            localStorage.setItem("tema", "oscuro");
+        } else {
+            iconoTema.classList.replace("fa-sun", "fa-moon");
+            localStorage.setItem("tema", "claro");
+        }
+    });
+
+
     // 1. Menú Hamburguesa
     const navToggle = document.querySelector(".nav-toggle");
     const navLinks = document.querySelector(".nav-links");

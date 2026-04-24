@@ -8,10 +8,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 </head>
 <body>
+    <script>
+        // Leemos la memoria inmediatamente
+        const temaSuscrito = localStorage.getItem("tema");
+        if (temaSuscrito === "oscuro") {
+          document.body.classList.add("modo-oscuro");
+        }
+    </script>
 
     <nav class="navbar">
         <a href="https://www.fcaglp.unlp.edu.ar/" target="_blank" class="fcaglp-link">
-            <i class="fa-solid fa-building-columns"></i> <span class="hide-mobile">FCAGLP Oficial</span>
+            <i class="fa-solid fa-building-columns"></i> <span class="hide-mobile">FCAGLP</span>
         </a>
         
         <button class="nav-toggle" aria-label="Abrir menú">
@@ -19,6 +26,11 @@
         </button>
 
         <ul class="nav-links">
+            <li>
+                <button id="btn-tema" aria-label="Cambiar tema" style="background: none; border: none; color: var(--white); font-size: 1.2rem; cursor: pointer; padding: 5px;">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </li>
             <li><a href="inicio.html">Inicio</a></li>
             <li><a href="nosotros.html">Quiénes Somos</a></li>
             <li><a href="cegma.html">El CEGMA</a></li>

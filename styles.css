@@ -329,3 +329,91 @@ p a:hover, .card p a:hover {
 /* --- ANIMACIONES --- */
 .animate-on-scroll { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
 .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+
+
+/* --- MODO OSCURO --- */
+/* Esta clase se la vamos a poner y sacar al <body> con JavaScript */
+body.modo-oscuro {
+    --white: #121212; /* El fondo general pasa a ser casi negro */
+    --black: #ffffff; /* El texto general pasa a ser blanco */
+    --gray: #1e1e1e;  /* El fondo de las tarjetas pasa a ser gris oscuro */
+    --dark: #000000;  /* El footer y menú pasan a negro puro */
+}
+
+/* Transición suave para que no sea un golpe a la vista al cambiar */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.card, .navbar, footer, .dropdown-content {
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+/* Ajuste específico para íconos de recursos en modo oscuro */
+body.modo-oscuro .card i {
+    background-color: #000000;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.05); /* Sombra más clara */
+}
+
+/* --- CORRECCIÓN DEL MODO OSCURO (Textos invisibles) --- */
+/* Forzamos a que la variable --white vuelva a ser blanco puro SOLO adentro de estas secciones */
+body.modo-oscuro .navbar,
+body.modo-oscuro footer,
+body.modo-oscuro .dropdown-content,
+body.modo-oscuro .hero,
+body.modo-oscuro #login-section i {
+    --white: #ffffff; 
+}
+
+/* Y si en algún lado usaste la etiqueta de texto en blanco directamente: */
+body.modo-oscuro .nav-links a,
+body.modo-oscuro .fcaglp-link,
+body.modo-oscuro .nav-toggle {
+    color: #ffffff;
+}
+
+/* --- REDISEÑO DE LA NAVBAR EN MODO OSCURO --- */
+body.modo-oscuro .navbar {
+    background-color: var(--primary) !important; /* Fondo naranja */
+}
+
+/* Todos los enlaces en negro */
+body.modo-oscuro .nav-links a {
+    color: #000000; 
+    font-weight: 700;
+}
+
+/* Que se pongan blancos al pasar el mouse (queda muy bien sobre naranja) */
+body.modo-oscuro .nav-links a:hover {
+    color: #ffffff; 
+}
+
+/* El botón "Tu Espacio" siempre en blanco para que resalte */
+body.modo-oscuro .nav-links a.destacado {
+    color: #ffffff;
+}
+
+/* El botón de FCAGLP Oficial */
+body.modo-oscuro .fcaglp-link {
+    color: #000000;
+    border-color: #000000;
+}
+
+body.modo-oscuro .fcaglp-link:hover {
+    background-color: #000000;
+    color: var(--primary);
+}
+
+/* Los íconos (el de cambiar el tema y el menú hamburguesa en celu) en negro */
+body.modo-oscuro .nav-toggle,
+body.modo-oscuro #btn-tema {
+    color: #000000 !important; 
+}
+
+/* --- CORRECCIÓN SUBMENÚ PROYECTOS EN MODO OSCURO --- */
+body.modo-oscuro .dropdown-content a {
+    color: var(--primary) !important; /* Texto naranja por defecto */
+}
+body.modo-oscuro .dropdown-content a:hover {
+    color: #ffffff !important; /* Texto blanco */
+}
