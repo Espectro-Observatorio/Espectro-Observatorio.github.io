@@ -6,7 +6,7 @@
     <title>Agrupación CEGMA - FCAGLP</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="stylesTE.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 </head>
 <body>
 
@@ -44,6 +44,31 @@
         </div>
     </header>
 
+    <main class="container">
+        <section id="login-section" class="animate-on-scroll" style="text-align: center; padding: 4rem 0;">
+            <i class="fa-solid fa-lock" style="font-size: 4rem; color: var(--primary); margin-bottom: 2rem;"></i>
+            <h2>Bienvenido a Tu Espacio</h2>
+            <p class="main-text" style="text-align: center;">Iniciá sesión para gestionar tus materias, calendario y promedio.</p>
+            
+            <button id="btn-login" class="btn-main" style="background: var(--black); color: white; padding: 15px 30px; border-radius: 50px; border: 2px solid var(--primary); cursor: pointer; font-weight: bold; margin-top: 2rem; display: inline-flex; align-items: center; gap: 10px;">
+                <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="20">
+                Entrar con Google
+            </button>
+        </section>
+
+        <section id="dashboard-section" style="display: none;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem;">
+                <h2>Hola, <span id="user-name" style="color: var(--primary);">Estudiante</span></h2>
+                <button id="btn-logout" style="background: none; border: 1px solid red; color: red; padding: 5px 10px; border-radius: 5px; cursor: pointer;">Cerrar Sesión</button>
+            </div>
+            
+            </section>
+    </main>
+
+    <script type="module" src="auth.js"></script>
+
+<!--  
+  
     <main class="container">
         <h2 class="animate-on-scroll">Mi Espacio (Modo de prueba)</h2>
         <p class="animate-on-scroll">Acá vas a poder gestionar tu carrera en el futuro.</p>
@@ -87,11 +112,13 @@
         </div>
     </main>
 
+-->
+
     <footer>
         <div class="social-icons">
             <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#"><i class="fa-solid fa-link"></i></a>
-            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#"><i class="fa-brands fa-linktree"></i></a>
+            <a href="https://www.youtube.com/@EspectroObservatorio" target="_blank" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
         </div>
         <p>&copy; 2026 Espectro</p>
     </footer>

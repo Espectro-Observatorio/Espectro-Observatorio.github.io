@@ -3,6 +3,7 @@
 
 :root {
     --primary: #f97316; /* Naranja */
+    --primary-transparent: #f9731699;
     --black: #000000;
     --dark: #1a1a1a;
     --white: #ffffff;
@@ -16,6 +17,15 @@ body {
     background-color: var(--white);
     color: var(--black);
     overflow-x: hidden;
+}
+
+p {
+    text-align: justify;
+}
+
+.main-text {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
 }
 
 /* --- FOOTER REDISEÑADO --- */
@@ -207,7 +217,7 @@ p a:hover, .card p a:hover {
 /* --- HERO --- */
 .hero {
     height: 70vh;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('assets/facultad.jpg') center/cover fixed;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://www.fcaglp.unlp.edu.ar/wp-content/uploads/2024/06/004-scaled.jpg') center/cover fixed;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -224,6 +234,8 @@ p a:hover, .card p a:hover {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 25px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 .card {
