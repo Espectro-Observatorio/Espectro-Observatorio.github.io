@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agrupación CEGMA - FCAGLP</title>
+    <title>Espectro</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="stylesTE.css">
+    <link rel="stylesheet" href="stylesTE.css"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 </head>
 <body>
@@ -63,148 +63,144 @@
             <p class="main-text" style="text-align: center;">Iniciá sesión para gestionar tus materias, calendario y promedio.</p>
             
             <button id="btn-login" class="btn-main" style="background: var(--black); color: white; padding: 15px 30px; border-radius: 50px; border: 2px solid var(--primary); cursor: pointer; font-weight: bold; margin-top: 2rem; display: inline-flex; align-items: center; gap: 10px;">
-                <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="20">
+                <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="20" alt="Google Logo">
                 Entrar con Google
             </button>
         </section>
 
         <section id="dashboard-section" style="display: none; padding-top: 2rem;">
     
-		    <div class="header-dashboard">
-		        <h2>Mi Cronograma</h2>
-		        <div class="vista-toggles">
-		            <button class="btn-vista activo">Semana</button>
-		            <button class="btn-vista">Mes</button>
-		        </div>
-		    </div>
-		
-		    <div class="calendario-semana">
-		        <div class="cal-vacio"></div>
-		        <div class="cal-dia">Lunes</div>
-		        <div class="cal-dia">Martes</div>
-		        <div class="cal-dia">Miércoles</div>
-		        <div class="cal-dia">Jueves</div>
-		        <div class="cal-dia">Viernes</div>
-		
-		        <div class="cal-horas">
-		            <span>08:00</span><span>09:00</span><span>10:00</span><span>11:00</span>
-		            <span>12:00</span><span>13:00</span><span>14:00</span><span>15:00</span>
-		            <span>16:00</span><span>17:00</span><span>18:00</span><span>19:00</span>
-		            <span>20:00</span><span>21:00</span><span>22:00</span>
-		        </div>
-		
-		        <div class="cal-grilla" id="grilla-horarios">
-		            <div class="cal-lineas"></div>
-		
-		            <div class="bloque-materia teoria" style="grid-column: 1; grid-row: 1 / 4; --color-materia: #3b82f6;">
-		                <span class="titulo-bloque">Física I</span>
-		                <span class="detalle-bloque"><i class="fa-solid fa-book"></i> Teoría - Aula 12</span>
-		            </div>
-		
-		            <div class="bloque-materia practica" style="grid-column: 3; grid-row: 7 / 10; --color-materia: #3b82f6;">
-		                <span class="titulo-bloque">Física I</span>
-		                <span class="detalle-bloque"><i class="fa-solid fa-pencil"></i> Práctica - Aula 4</span>
-		            </div>
-		        </div>
-		    </div>
-		
-		    <button class="btn-flotante" id="btn-nuevo" aria-label="Agregar">
-		        <i class="fa-solid fa-plus"></i>
-		    </button>
-		
-		    <div class="modal-overlay" id="modal-carga">
-		        <div class="modal-content animate-on-scroll visible">
-		            <button class="cerrar-modal" id="btn-cerrar-modal"><i class="fa-solid fa-xmark"></i></button>
-		            
-		            <div class="modal-tabs">
-		                <button class="tab-btn activo" data-target="form-materia">Materia</button>
-		                <button class="tab-btn" data-target="form-evento">Evento</button>
-		            </div>
-		
-		            <form id="form-materia" class="form-modal activo">
-		                <h3>Agregar Horario de Cursada</h3>
-		                
-		                <div class="form-grupo">
-		                    <label>Materia</label>
-		                    <select id="sel-materia">
-		                        <option value="">Seleccionar materia...</option>
-		                        <option value="fisica1">Física I</option>
-		                        <option value="mate1">Análisis Matemático I</option>
-		                        <option value="otra">Otra...</option>
-		                    </select>
-		                </div>
-		
-		                <div class="form-row">
-		                    <div class="form-grupo">
-		                        <label>Profesor</label>
-		                        <select id="sel-profe"><option>Seleccionar...</option><option>Crear nuevo...</option></select>
-		                    </div>
-		                    <div class="form-grupo">
-		                        <label>Aula</label>
-		                        <input type="text" placeholder="Ej: Aula Magna">
-		                    </div>
-		                </div>
-		
-		                <div class="form-row">
-		                    <div class="form-grupo">
-		                        <label>Modalidad</label>
-		                        <select><option>Promocionable</option><option>Final Obligatorio</option><option>PRAE</option></select>
-		                    </div>
-		                    <div class="form-grupo">
-		                        <label>Color</label>
-		                        <input type="color" value="#f97316" id="color-materia">
-		                    </div>
-		                </div>
-		
-		                <hr style="margin: 15px 0; border: 0; border-top: 1px solid var(--gray);">
-		
-		                <h4>Horario</h4>
-		                <div class="form-row">
-		                    <div class="form-grupo">
-		                        <label>Día</label>
-		                        <select><option value="1">Lunes</option><option value="2">Martes</option></select>
-		                    </div>
-		                    <div class="form-grupo">
-		                        <label>De</label>
-		                        <input type="time" value="08:00">
-		                    </div>
-		                    <div class="form-grupo">
-		                        <label>A</label>
-		                        <input type="time" value="10:00">
-		                    </div>
-		                </div>
-		                
-		                <div class="form-grupo">
-		                    <label>Tipo de clase</label>
-		                    <select><option value="teoria">Teoría</option><option value="practica">Práctica</option><option value="otro">Otro</option></select>
-		                </div>
-		
-		                <button type="button" class="btn-main" style="width: 100%; margin-top: 1rem;">Guardar Materia</button>
-		            </form>
-		
-		            <form id="form-evento" class="form-modal" style="display: none;">
-		                <h3>Agregar Evento</h3>
-		                <p>Acá irían los campos para Parciales, Entregas, etc.</p>
-		                </form>
-		        </div>
-		    </div>
-		</section>
-    </main>
-
-    <script type="module" src="auth.js"></script>
-
+            <div class="header-dashboard">
+                <h2>Mi Cronograma</h2>
+                <div class="vista-toggles">
+                    <button class="btn-vista activo">Semana</button>
+                    <button class="btn-vista">Mes</button>
+                </div>
+            </div>
         
+            <div class="calendario-semana">
+                <div class="cal-vacio"></div>
+                <div class="cal-dia">Lunes</div>
+                <div class="cal-dia">Martes</div>
+                <div class="cal-dia">Miércoles</div>
+                <div class="cal-dia">Jueves</div>
+                <div class="cal-dia">Viernes</div>
+        
+                <div class="cal-horas">
+                    <span>08:00</span><span>09:00</span><span>10:00</span><span>11:00</span>
+                    <span>12:00</span><span>13:00</span><span>14:00</span><span>15:00</span>
+                    <span>16:00</span><span>17:00</span><span>18:00</span><span>19:00</span>
+                    <span>20:00</span><span>21:00</span><span>22:00</span>
+                </div>
+        
+                <div class="cal-grilla" id="grilla-horarios">
+                    <div class="cal-lineas"></div>
+        
+                    <div class="bloque-materia teoria" style="grid-column: 1; grid-row: 1 / 4; --color-materia: #3b82f6;">
+                        <span class="titulo-bloque">Física I</span>
+                        <span class="detalle-bloque"><i class="fa-solid fa-book"></i> Teoría - Aula 12</span>
+                    </div>
+        
+                    <div class="bloque-materia practica" style="grid-column: 3; grid-row: 7 / 10; --color-materia: #3b82f6;">
+                        <span class="titulo-bloque">Física I</span>
+                        <span class="detalle-bloque"><i class="fa-solid fa-pencil"></i> Práctica - Aula 4</span>
+                    </div>
+                </div>
+            </div>
+        
+            <button class="btn-flotante" id="btn-nuevo" aria-label="Agregar">
+                <i class="fa-solid fa-plus"></i>
+            </button>
+        
+            <div class="modal-overlay" id="modal-carga">
+                <div class="modal-content animate-on-scroll visible">
+                    <button class="cerrar-modal" id="btn-cerrar-modal"><i class="fa-solid fa-xmark"></i></button>
+                    
+                    <div class="modal-tabs">
+                        <button class="tab-btn activo" data-target="form-materia">Materia</button>
+                        <button class="tab-btn" data-target="form-evento">Evento</button>
+                    </div>
+        
+                    <form id="form-materia" class="form-modal activo">
+                        <h3>Agregar Horario de Cursada</h3>
+                        
+                        <div class="form-grupo">
+                            <label>Materia</label>
+                            <select id="sel-materia">
+                                <option value="">Seleccionar materia...</option>
+                                <option value="fisica1">Física I</option>
+                                <option value="mate1">Análisis Matemático I</option>
+                                <option value="otra">Otra...</option>
+                            </select>
+                        </div>
+        
+                        <div class="form-row">
+                            <div class="form-grupo">
+                                <label>Profesor</label>
+                                <select id="sel-profe"><option>Seleccionar...</option><option>Crear nuevo...</option></select>
+                            </div>
+                            <div class="form-grupo">
+                                <label>Aula</label>
+                                <input type="text" placeholder="Ej: Aula Magna">
+                            </div>
+                        </div>
+        
+                        <div class="form-row">
+                            <div class="form-grupo">
+                                <label>Modalidad</label>
+                                <select><option>Promocionable</option><option>Final Obligatorio</option><option>PRAE</option></select>
+                            </div>
+                            <div class="form-grupo">
+                                <label>Color</label>
+                                <input type="color" value="#f97316" id="color-materia">
+                            </div>
+                        </div>
+        
+                        <hr style="margin: 15px 0; border: 0; border-top: 1px solid var(--gray);">
+        
+                        <h4>Horario</h4>
+                        <div class="form-row">
+                            <div class="form-grupo">
+                                <label>Día</label>
+                                <select><option value="1">Lunes</option><option value="2">Martes</option></select>
+                            </div>
+                            <div class="form-grupo">
+                                <label>De</label>
+                                <input type="time" value="08:00">
+                            </div>
+                            <div class="form-grupo">
+                                <label>A</label>
+                                <input type="time" value="10:00">
+                            </div>
+                        </div>
+                        
+                        <div class="form-grupo">
+                            <label>Tipo de clase</label>
+                            <select><option value="teoria">Teoría</option><option value="practica">Práctica</option><option value="otro">Otro</option></select>
+                        </div>
+        
+                        <button type="button" class="btn-main" style="width: 100%; margin-top: 1rem;">Guardar Materia</button>
+                    </form>
+        
+                    <form id="form-evento" class="form-modal" style="display: none;">
+                        <h3>Agregar Evento</h3>
+                        <p>Acá irían los campos para Parciales, Entregas, etc.</p>
+                    </form>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer>
         <div class="social-icons">
             <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#"><i class="fa-brands fa-linktree"></i></a>
+            <a href="#"><i class="fa-solid fa-link"></i></a>
             <a href="https://www.youtube.com/@EspectroObservatorio" target="_blank" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
         </div>
         <p>&copy; 2026 Espectro</p>
     </footer>
 
+    <script type="module" src="auth.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
