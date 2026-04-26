@@ -427,14 +427,18 @@ body.modo-oscuro .dropdown-content a:hover {
     margin-bottom: 2rem;
 }
 
+/* --- CALENDARIO SEMANAL (Actualizado para Scroll Horizontal) --- */
 .calendario-semana {
     display: grid;
-    grid-template-columns: 60px repeat(5, 1fr); /* 1 col para horas, 5 para días */
+    /* Reducimos un poco la hora a 50px y forzamos a los días a tener al menos 120px */
+    grid-template-columns: 50px repeat(5, minmax(120px, 1fr)); 
     background: var(--white);
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    overflow-x: auto; /* Para que se pueda scrollear en celular */
+    overflow-x: auto; 
     border: 1px solid var(--gray);
+    /* Ocultamos la barra de scroll fea en algunos navegadores móviles */
+    scrollbar-width: thin; 
 }
 
 .cal-vacio { border-bottom: 2px solid var(--gray); border-right: 1px solid var(--gray); }
@@ -572,3 +576,45 @@ body.modo-oscuro .form-grupo input, body.modo-oscuro .form-grupo select { border
     color: gray; cursor: pointer; border-bottom: 3px solid transparent; transform: translateY(2px);
 }
 .tab-btn.activo { color: var(--primary); border-bottom-color: var(--primary); }
+
+/* --- RESPONSIVE PARA EL DASHBOARD Y MODAL --- */
+@media (max-width: 768px) {
+    /* El título y los botones de vista se apilan */
+    .header-dashboard {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    /* El modal aprovecha más la pantalla y reduce los márgenes internos */
+    .modal-content {
+        width: 95%;
+        padding: 1.5rem;
+        max-height: 85vh; /* Evita que el teclado del celu tape todo */
+    }
+
+    /* Rompemos las filas del formulario para que queden en una sola columna */
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    /* Le devolvemos el margen inferior a los inputs que ahora están apilados */
+    .form-row .form-grupo {
+        margin-bottom: 15px;
+    }
+
+    /* Ajustamos el tamaño del texto en los bloques para que entren mejor */
+    .bloque-materia {
+        font-size: 0.75rem;
+        padding: 5px;
+    }
+    
+    .titulo-bloque {
+        font-size: 0.8rem;
+    }
+    
+    .detalle-bloque {
+        font-size: 0.7rem;
+    }
+}
