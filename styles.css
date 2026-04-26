@@ -417,3 +417,158 @@ body.modo-oscuro .dropdown-content a {
 body.modo-oscuro .dropdown-content a:hover {
     color: #ffffff !important; /* Texto blanco */
 }
+
+
+/* --- CALENDARIO SEMANAL (CSS GRID) --- */
+.header-dashboard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.calendario-semana {
+    display: grid;
+    grid-template-columns: 60px repeat(5, 1fr); /* 1 col para horas, 5 para días */
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    overflow-x: auto; /* Para que se pueda scrollear en celular */
+    border: 1px solid var(--gray);
+}
+
+.cal-vacio { border-bottom: 2px solid var(--gray); border-right: 1px solid var(--gray); }
+
+.cal-dia {
+    text-align: center;
+    padding: 10px 0;
+    font-weight: bold;
+    border-bottom: 2px solid var(--gray);
+    border-right: 1px solid var(--gray);
+    background: var(--light-gray);
+}
+body.modo-oscuro .cal-dia { background: var(--dark); }
+
+.cal-horas {
+    display: grid;
+    grid-template-rows: repeat(14, 60px); /* 14 horas de 8 a 22, cada una mide 60px alto */
+    text-align: right;
+    padding-right: 10px;
+    border-right: 1px solid var(--gray);
+    font-size: 0.8rem;
+    color: #666;
+}
+.cal-horas span { transform: translateY(-10px); }
+
+.cal-grilla {
+    grid-column: 2 / -1; /* Ocupa las 5 columnas de los días */
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(14, 60px); /* Las mismas 14 horas */
+    position: relative;
+}
+
+/* --- BLOQUES DE MATERIA --- */
+.bloque-materia {
+    margin: 2px;
+    padding: 8px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.2s;
+    border-left: 4px solid var(--color-materia);
+}
+
+.bloque-materia:hover {
+    transform: scale(1.02);
+    cursor: pointer;
+    z-index: 10;
+}
+
+.titulo-bloque { display: block; font-weight: bold; margin-bottom: 3px; }
+.detalle-bloque { font-size: 0.75rem; opacity: 0.9; display: block; }
+
+/* El truco visual: Teoría vs Práctica */
+/* Teoría: Fondo sólido semi-transparente del color elegido */
+.bloque-materia.teoria {
+    background-color: color-mix(in srgb, var(--color-materia) 85%, black);
+}
+
+/* Práctica: El mismo color pero con un rayado diagonal sutil */
+.bloque-materia.practica {
+    background: repeating-linear-gradient(
+        45deg,
+        color-mix(in srgb, var(--color-materia) 85%, black),
+        color-mix(in srgb, var(--color-materia) 85%, black) 10px,
+        color-mix(in srgb, var(--color-materia) 70%, black) 10px,
+        color-mix(in srgb, var(--color-materia) 70%, black) 20px
+    );
+}
+
+/* --- BOTÓN FLOTANTE Y MODAL --- */
+.btn-flotante {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4);
+    cursor: pointer;
+    transition: transform 0.3s;
+    z-index: 100;
+}
+.btn-flotante:hover { transform: scale(1.1) rotate(90deg); }
+
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: none; /* Oculto por defecto */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+body.modo-oscuro .modal-content { background: var(--dark); border: 1px solid #333; }
+
+.cerrar-modal {
+    position: absolute; top: 15px; right: 15px;
+    background: none; border: none; font-size: 1.5rem; cursor: pointer;
+    color: var(--black);
+}
+
+.form-grupo { display: flex; flex-direction: column; margin-bottom: 15px; flex: 1; }
+.form-grupo label { font-size: 0.85rem; font-weight: bold; margin-bottom: 5px; color: var(--black); }
+.form-row { display: flex; gap: 15px; }
+
+/* Estilos de inputs generales */
+.form-grupo input, .form-grupo select {
+    padding: 10px; border: 1px solid #ccc; border-radius: 6px;
+    background: transparent; color: var(--black);
+}
+body.modo-oscuro .form-grupo input, body.modo-oscuro .form-grupo select { border-color: #444; }
+
+/* Pestañas del Modal */
+.modal-tabs { display: flex; border-bottom: 2px solid var(--gray); margin-bottom: 20px; }
+.tab-btn {
+    flex: 1; background: none; border: none; padding: 10px; font-weight: bold;
+    color: gray; cursor: pointer; border-bottom: 3px solid transparent; transform: translateY(2px);
+}
+.tab-btn.activo { color: var(--primary); border-bottom-color: var(--primary); }
