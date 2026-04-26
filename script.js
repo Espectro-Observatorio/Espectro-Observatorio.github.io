@@ -66,3 +66,47 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelectorAll(".animate-on-scroll").forEach(el => observer.observe(el));
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    // --- LÓGICA DEL CALENDARIO Y MODAL ---
+    const btnNuevo = document.getElementById("btn-nuevo");
+    const modalOverlay = document.getElementById("modal-carga");
+    const btnCerrarModal = document.getElementById("btn-cerrar-modal");
+    const tabBtns = document.querySelectorAll(".tab-btn");
+    const forms = document.querySelectorAll(".form-modal");
+
+    // Asegurarse de que existan antes de agregar eventos
+    if (btnNuevo && modalOverlay) {
+        
+        // Abrir Modal
+        btnNuevo.addEventListener("click", () => {
+            modalOverlay.style.display = "flex";
+        });
+
+        // Cerrar Modal con la X
+        btnCerrarModal.addEventListener("click", () => {
+            modalOverlay.style.display = "none";
+        });
+
+        // Cerrar Modal haciendo clic afuera
+        modalOverlay.addEventListener("click", (e) => {
+            if (e.target === modalOverlay) {
+                modalOverlay.style.display = "none";
+            }
+        });
+
+        // Cambiar entre pestañas (Materia / Evento)
+        tabBtns.forEach(btn => {
+            btn.addEventListener("click", () => {
+                // Sacar activo a todos
+                tabBtns.forEach(b => b.classList.remove("activo"));
+                forms.forEach(f => f.style.display = "none");
+
+                // Poner activo al seleccionado
+                btn.classList.add("activo");
+                const targetId = btn.getAttribute("data-target");
+                document.getElementById(targetId).style.display = "block";
+            });
+        });
+    }
+});
