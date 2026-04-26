@@ -618,3 +618,96 @@ body.modo-oscuro .form-grupo input, body.modo-oscuro .form-grupo select { border
         font-size: 0.7rem;
     }
 }
+
+/* --- AJUSTES DE CALENDARIO INMOVILIZADO (STICKY) --- */
+
+.calendario-semana {
+    display: grid;
+    /* 1 columna para horas (60px) y el resto para los 7 días (min 150px cada uno) */
+    grid-template-columns: 60px repeat(7, minmax(150px, 1fr)); 
+    grid-template-rows: auto 1fr; /* Fila 1: Días, Fila 2: Grilla */
+    height: 600px; /* Altura fija para permitir el scroll interno */
+    overflow: auto;
+    position: relative;
+    border: 1px solid var(--gray);
+    background: var(--white);
+    border-radius: 10px;
+}
+
+/* Esquina superior izquierda que siempre se queda ahí */
+.cal-vacio-fijo {
+    grid-column: 1;
+    grid-row: 1;
+    position: sticky;
+    top: 0;
+    left: 0;
+    background: var(--light-gray);
+    z-index: 30;
+    border-bottom: 2px solid var(--gray);
+    border-right: 1px solid var(--gray);
+}
+body.modo-oscuro .cal-vacio-fijo { background: var(--dark); }
+
+/* Encabezados de días siempre visibles arriba */
+.cal-dia {
+    position: sticky;
+    top: 0;
+    background: var(--light-gray);
+    z-index: 20;
+    text-align: center;
+    padding: 15px 0;
+    font-weight: bold;
+    border-bottom: 2px solid var(--gray);
+    border-right: 1px solid var(--gray);
+}
+body.modo-oscuro .cal-dia { background: var(--dark); }
+
+/* Columna de horas siempre visible a la izquierda */
+.cal-horas {
+    grid-column: 1;
+    position: sticky;
+    left: 0;
+    background: var(--light-gray);
+    z-index: 20;
+    display: grid;
+    /* 15 huecos para el rango 07:00 a 22:00 */
+    grid-template-rows: repeat(15, 60px); 
+    text-align: right;
+    padding-right: 10px;
+    border-right: 1px solid var(--gray);
+}
+body.modo-oscuro .cal-horas { background: var(--dark); }
+
+/* Corrección de la posición del texto de las horas para que no parezca tachado */
+.cal-horas span {
+    font-size: 0.75rem;
+    color: var(--black);
+    opacity: 0.7;
+    /* Bajamos el texto 30px para que quede centrado entre las líneas, no sobre ellas */
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+/* Grilla de contenidos */
+.cal-grilla {
+    grid-column: 2 / 9; /* De la columna 2 a la 9 (los 7 días) */
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(15, 60px);
+    position: relative;
+}
+
+/* Líneas horizontales de guía */
+.cal-lineas {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    background-image: linear-gradient(var(--gray) 1px, transparent 1px);
+    background-size: 100% 60px;
+}
+
+/* --- AJUSTES DE BLOQUES PARA 7 DÍAS --- */
+/* Ahora grid-column irá del 1 (Domingo) al 7 (Sábado) */
+/* grid-row irá del 1 (07:00-08:00) al 15 (21:00-22:00) */
