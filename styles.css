@@ -665,6 +665,7 @@ body.modo-oscuro .cal-dia { background: var(--dark); }
 /* Columna de horas siempre visible a la izquierda */
 .cal-horas {
     grid-column: 1;
+    grid-row: 2; /* Forzamos a que empiece abajo de los días */
     position: sticky;
     left: 0;
     background: var(--light-gray);
@@ -692,7 +693,8 @@ body.modo-oscuro .cal-horas { background: var(--dark); }
 
 /* Grilla de contenidos */
 .cal-grilla {
-    grid-column: 2 / 9; /* De la columna 2 a la 9 (los 7 días) */
+    grid-column: 2 / 9;
+    grid-row: 2; /* Forzamos a que empiece abajo de los días */
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: repeat(15, 60px);
