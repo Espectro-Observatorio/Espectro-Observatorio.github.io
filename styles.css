@@ -253,6 +253,8 @@ p a:hover, .card p a:hover { color: var(--black); }
     text-align: center; font-weight: bold; padding: 10px 0;
     background: var(--light-gray); border-bottom: 2px solid var(--gray);
 }
+.cal-dia-semana:nth-child(1) { border-top-left-radius: 9px; }
+.cal-dia-semana:nth-child(7) { border-top-right-radius: 9px; }
 
 .cal-grilla-dias {
     grid-column: 1 / -1; display: grid; grid-template-columns: repeat(7, 1fr);
