@@ -16,7 +16,7 @@
     /* Colores de Facultades */
     --color-fcag: navy;       /* Azul marino */
     --color-fce: deeppink;    /* Rosa */
-    --color-fcnym: lawngreen; /* Verde manzana */
+    --color-fcnym: #32CD32;   /* Verde manzana */
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -321,7 +321,7 @@ p a:hover, .card p a:hover { color: var(--black); }
 .filtro-btn:has(input:checked) span i { display: inline-block; }
 .filtro-btn.fcag-filtro:has(input:checked) span { border-color: var(--color-fcag); color: var(--color-fcag); background: rgba(0,0,128,0.05); }
 .filtro-btn.fce-filtro:has(input:checked) span { border-color: var(--color-fce); color: var(--color-fce); background: rgba(255,20,147,0.05); }
-.filtro-btn.fcnym-filtro:has(input:checked) span { border-color: var(--color-fcnym); color: #2c5e00; background: rgba(124,252,0,0.1); }
+.filtro-btn.fcnym-filtro:has(input:checked) span { border-color: var(--color-fcnym); color: var(--color-fcnym); background: rgba(124,252,0,0.1); }
 
 /* Tooltips */
 .dia-tooltip {
@@ -419,7 +419,8 @@ body.modo-oscuro {
     --gray: #1e1e1e;
     --dark: #000000;
     --light-gray: #000000; /* Asegura el fondo oscuro inmovilizado en calendarios */
-    --color-fcag: #6495ED
+    --color-fcag: cornflowerblue;
+    --color-fcnym: lawngreen;
 }
 
 /* Excepciones de contraste (Forzar texto visible) */
