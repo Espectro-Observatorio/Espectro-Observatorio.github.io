@@ -295,9 +295,9 @@ p a:hover, .card p a:hover { color: var(--black); }
 .fce-mesa { background-color: var(--color-fce); }
 .fcnym-mesa { background-color: var(--color-fcnym); color: black; }
 
-.fcag-inscripcion { border: 3px solid var(--color-fcag); background-color: transparent; }
-.fce-inscripcion { border: 3px solid var(--color-fce); background-color: transparent; }
-.fcnym-inscripcion { border: 3px solid var(--color-fcnym); background-color: transparent; }
+.fcag-inscripcion { border: 2px solid var(--color-fcag); background-color: transparent; }
+.fce-inscripcion { border: 2px solid var(--color-fce); background-color: transparent; }
+.fcnym-inscripcion { border: 2px solid var(--color-fcnym); background-color: transparent; }
 
 .indicadores-container { display: flex; gap: 4px; flex-wrap: wrap; margin-top: auto; justify-content: flex-end; }
 .indicador { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; box-shadow: 0 1px 3px rgba(0,0,0,0.2); box-sizing: border-box; }
