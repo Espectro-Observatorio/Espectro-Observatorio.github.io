@@ -1,0 +1,314 @@
+[
+  {
+    "facultad": "FCAG",
+    "turno": "Febrero (FCAG)",
+    "inicio_inscripcion": "2026-02-09",
+    "fin_inscripcion": "2026-02-18",
+    "inicio_mesa": "2026-02-23",
+    "fin_mesa": "2026-02-27"
+  },
+  {
+    "facultad": "FCAG",
+    "turno": "Marzo I (FCAG)",
+    "inicio_inscripcion": "2026-02-23",
+    "fin_inscripcion": "2026-03-04",
+    "inicio_mesa": "2026-03-09",
+    "fin_mesa": "2026-03-13"
+  },
+  {
+    "facultad": "FCAG",
+    "turno": "Marzo II (FCAG)",
+    "inicio_inscripcion": "2026-03-09",
+    "fin_inscripcion": "2026-03-18",
+    "inicio_mesa": "2026-03-23",
+    "fin_mesa": "2026-03-27"
+  },
+  {
+    "facultad": "FCAG",
+    "turno": "Abril (FCAG)",
+    "inicio_inscripcion": "2026-04-06",
+    "fin_inscripcion": "2026-04-15",
+    "inicio_mesa": "2026-04-20",
+    "fin_mesa": "2026-04-24"
+  },
+  {
+    "facultad": "FCAG",
+    "turno": "Mayo (FCAG)",
+    "inicio_inscripcion": "2026-04-27",
+    "fin_inscripcion": "2026-05-06",
+    "inicio_mesa": "2026-05-11",
+    "fin_mesa": "2026-05-15"
+  },
+  {
+    "facultad": "FCAG",
+    "turno": "Junio I (FCAG)",
+    "inicio_inscripcion": "2026-05-18",
+    "fin_inscripcion": "2026-05-27",
+    "inicio_mesa": "2026-06-01",
+    "fin_mesa": "2026-06-05"
+  },
+  {
+    "facultad": "FCAG",
+    "turno": "Junio II (FCAG)",
+    "inicio_inscripcion": "2026-06-08",
+    "fin_inscripcion": "2026-06-17",
+    "inicio_mesa": "2026-06-22",
+    "fin_mesa": "2026-06-26"
+  },
+  {
+    "facultad": "FCAG",
+    "turno": "Julio (FCAG)",
+    "inicio_inscripcion": "2026-06-29",
+    "fin_inscripcion": "2026-07-08",
+    "inicio_mesa": "2026-07-13",
+    "fin_mesa": "2026-07-17"
+  },
+  {
+    "facultad": "FCAG",
+    "turno": "Agosto (FCAG)",
+    "inicio_inscripcion": "2026-08-03",
+    "fin_inscripcion": "2026-08-12",
+    "inicio_mesa": "2026-08-17",
+    "fin_mesa": "2026-08-21"
+  },
+  {
+    "facultad": "FCAG",
+    "turno": "Septiembre (FCAG)",
+    "inicio_inscripcion": "2026-08-31",
+    "fin_inscripcion": "2026-09-09",
+    "inicio_mesa": "2026-09-14",
+    "fin_mesa": "2026-09-18"
+  },
+  {
+    "facultad": "FCAG",
+    "turno": "Octubre (FCAG)",
+    "inicio_inscripcion": "2026-10-05",
+    "fin_inscripcion": "2026-10-14",
+    "inicio_mesa": "2026-10-19",
+    "fin_mesa": "2026-10-23"
+  },
+  {
+    "facultad": "FCAG",
+    "turno": "Noviembre I (FCAG)",
+    "inicio_inscripcion": "2026-10-26",
+    "fin_inscripcion": "2026-11-04",
+    "inicio_mesa": "2026-11-09",
+    "fin_mesa": "2026-11-13"
+  },
+  {
+    "facultad": "FCAG",
+    "turno": "Noviembre II (FCAG)",
+    "inicio_inscripcion": "2026-11-09",
+    "fin_inscripcion": "2026-11-18",
+    "inicio_mesa": "2026-11-23",
+    "fin_mesa": "2026-11-27"
+  },
+  {
+    "facultad": "FCAG",
+    "turno": "Diciembre (FCAG)",
+    "inicio_inscripcion": "2026-11-30",
+    "fin_inscripcion": "2026-12-09",
+    "inicio_mesa": "2026-12-14",
+    "fin_mesa": "2026-12-18"
+  },
+  {
+    "facultad": "FCE",
+    "turno": "Febrero (FCE)",
+    "inicio_inscripcion": "2026-01-26",
+    "fin_inscripcion": "2026-02-03",
+    "inicio_mesa": "2026-02-09",
+    "fin_mesa": "2026-02-13"
+  },
+  {
+    "facultad": "FCE",
+    "turno": "Marzo I (FCE)",
+    "inicio_inscripcion": "2026-02-16",
+    "fin_inscripcion": "2026-02-24",
+    "inicio_mesa": "2026-03-02",
+    "fin_mesa": "2026-03-06"
+  },
+  {
+    "facultad": "FCE",
+    "turno": "Marzo II (FCE)",
+    "inicio_inscripcion": "2026-03-09",
+    "fin_inscripcion": "2026-03-17",
+    "inicio_mesa": "2026-03-23",
+    "fin_mesa": "2026-03-27"
+  },
+  {
+    "facultad": "FCE",
+    "turno": "Abril (FCE)",
+    "inicio_inscripcion": "2026-04-06",
+    "fin_inscripcion": "2026-04-14",
+    "inicio_mesa": "2026-04-20",
+    "fin_mesa": "2026-04-24"
+  },
+  {
+    "facultad": "FCE",
+    "turno": "Mayo (FCE)",
+    "inicio_inscripcion": "2026-05-04",
+    "fin_inscripcion": "2026-05-12",
+    "inicio_mesa": "2026-05-18",
+    "fin_mesa": "2026-05-22"
+  },
+  {
+    "facultad": "FCE",
+    "turno": "Junio (FCE)",
+    "inicio_inscripcion": "2026-06-08",
+    "fin_inscripcion": "2026-06-16",
+    "inicio_mesa": "2026-06-22",
+    "fin_mesa": "2026-06-26"
+  },
+  {
+    "facultad": "FCE",
+    "turno": "Julio (FCE)",
+    "inicio_inscripcion": "2026-06-29",
+    "fin_inscripcion": "2026-07-07",
+    "inicio_mesa": "2026-07-13",
+    "fin_mesa": "2026-07-17"
+  },
+  {
+    "facultad": "FCE",
+    "turno": "Agosto (FCE)",
+    "inicio_inscripcion": "2026-08-03",
+    "fin_inscripcion": "2026-08-11",
+    "inicio_mesa": "2026-08-17",
+    "fin_mesa": "2026-08-21"
+  },
+  {
+    "facultad": "FCE",
+    "turno": "Septiembre (FCE)",
+    "inicio_inscripcion": "2026-08-31",
+    "fin_inscripcion": "2026-09-08",
+    "inicio_mesa": "2026-09-14",
+    "fin_mesa": "2026-09-18"
+  },
+  {
+    "facultad": "FCE",
+    "turno": "Octubre (FCE)",
+    "inicio_inscripcion": "2026-10-05",
+    "fin_inscripcion": "2026-10-13",
+    "inicio_mesa": "2026-10-19",
+    "fin_mesa": "2026-10-23"
+  },
+  {
+    "facultad": "FCE",
+    "turno": "Noviembre (FCE)",
+    "inicio_inscripcion": "2026-10-26",
+    "fin_inscripcion": "2026-11-03",
+    "inicio_mesa": "2026-11-09",
+    "fin_mesa": "2026-11-13"
+  },
+  {
+    "facultad": "FCE",
+    "turno": "Diciembre (FCE)",
+    "inicio_inscripcion": "2026-11-30",
+    "fin_inscripcion": "2026-12-08",
+    "inicio_mesa": "2026-12-14",
+    "fin_mesa": "2026-12-18"
+  },
+  {
+    "facultad": "FCNyM",
+    "turno": "Febrero (FCNyM)",
+    "inicio_inscripcion": "2026-01-26",
+    "fin_inscripcion": "2026-02-03",
+    "inicio_mesa": "2026-02-09",
+    "fin_mesa": "2026-02-13"
+  },
+  {
+    "facultad": "FCNyM",
+    "turno": "Marzo I (FCNyM)",
+    "inicio_inscripcion": "2026-02-16",
+    "fin_inscripcion": "2026-02-24",
+    "inicio_mesa": "2026-03-02",
+    "fin_mesa": "2026-03-06"
+  },
+  {
+    "facultad": "FCNyM",
+    "turno": "Marzo II (FCNyM)",
+    "inicio_inscripcion": "2026-03-09",
+    "fin_inscripcion": "2026-03-17",
+    "inicio_mesa": "2026-03-23",
+    "fin_mesa": "2026-03-27"
+  },
+  {
+    "facultad": "FCNyM",
+    "turno": "Abril (FCNyM)",
+    "inicio_inscripcion": "2026-04-06",
+    "fin_inscripcion": "2026-04-14",
+    "inicio_mesa": "2026-04-20",
+    "fin_mesa": "2026-04-24"
+  },
+  {
+    "facultad": "FCNyM",
+    "turno": "Mayo (FCNyM)",
+    "inicio_inscripcion": "2026-04-27",
+    "fin_inscripcion": "2026-05-05",
+    "inicio_mesa": "2026-05-11",
+    "fin_mesa": "2026-05-15"
+  },
+  {
+    "facultad": "FCNyM",
+    "turno": "Junio (FCNyM)",
+    "inicio_inscripcion": "2026-05-18",
+    "fin_inscripcion": "2026-05-26",
+    "inicio_mesa": "2026-06-01",
+    "fin_mesa": "2026-06-05"
+  },
+  {
+    "facultad": "FCNyM",
+    "turno": "Julio (FCNyM)",
+    "inicio_inscripcion": "2026-06-15",
+    "fin_inscripcion": "2026-06-23",
+    "inicio_mesa": "2026-06-29",
+    "fin_mesa": "2026-07-03"
+  },
+  {
+    "facultad": "FCNyM",
+    "turno": "Agosto (FCNyM)",
+    "inicio_inscripcion": "2026-08-10",
+    "fin_inscripcion": "2026-08-18",
+    "inicio_mesa": "2026-08-24",
+    "fin_mesa": "2026-08-28"
+  },
+  {
+    "facultad": "FCNyM",
+    "turno": "Septiembre (FCNyM)",
+    "inicio_inscripcion": "2026-09-14",
+    "fin_inscripcion": "2026-09-22",
+    "inicio_mesa": "2026-09-28",
+    "fin_mesa": "2026-10-02"
+  },
+  {
+    "facultad": "FCNyM",
+    "turno": "Octubre (FCNyM)",
+    "inicio_inscripcion": "2026-10-05",
+    "fin_inscripcion": "2026-10-13",
+    "inicio_mesa": "2026-10-19",
+    "fin_mesa": "2026-10-23"
+  },
+  {
+    "facultad": "FCNyM",
+    "turno": "Noviembre (FCNyM)",
+    "inicio_inscripcion": "2026-10-26",
+    "fin_inscripcion": "2026-11-03",
+    "inicio_mesa": "2026-11-09",
+    "fin_mesa": "2026-11-13"
+  },
+  {
+    "facultad": "FCNyM",
+    "turno": "Diciembre I (FCNyM)",
+    "inicio_inscripcion": "2026-11-16",
+    "fin_inscripcion": "2026-11-24",
+    "inicio_mesa": "2026-11-30",
+    "fin_mesa": "2026-12-04"
+  },
+  {
+    "facultad": "FCNyM",
+    "turno": "Diciembre II (FCNyM)",
+    "inicio_inscripcion": "2026-11-30",
+    "fin_inscripcion": "2026-12-08",
+    "inicio_mesa": "2026-12-14",
+    "fin_mesa": "2026-12-18"
+  }
+]

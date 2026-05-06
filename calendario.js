@@ -1,35 +1,12 @@
-document.addEventListener("DOMContentLoaded", () => {
-    // 1. BASE DE DATOS (El JSON que generarás desde Excel)
-    // Fechas en formato AAAA-MM-DD
-    const bdExamenes = [
-        {
-            facultad: "FCE",
-            turno: "Turno Mayo",
-            inicio_inscripcion: "2026-05-01", fin_inscripcion: "2026-05-03",
-            inicio_mesa: "2026-05-21", fin_mesa: "2026-05-25"
-        },
-        {
-            facultad: "FCAG",
-            turno: "Turno Mayo/Junio",
-            inicio_inscripcion: "2026-05-20", fin_inscripcion: "2026-05-24",
-            inicio_mesa: "2026-06-01", fin_mesa: "2026-06-12"
-        },
-        {
-            facultad: "FCNyM",
-            turno: "Turno Mayo",
-            inicio_inscripcion: "2026-04-20", fin_inscripcion: "2026-04-25",
-            // Simulamos que la mesa empieza HOY (Mayo 2026) para que lo veas marcado
-            inicio_mesa: "2026-05-06", fin_mesa: "2026-05-10" 
-        }
-    ];
+document.addEventListener("DOMContentLoaded", async () => {
+    
+    // 1. BASE DE DATOS (Arranca vacía, se llena sola después)
+    let bdExamenes = [];
 
     // 2. VARIABLES DE TIEMPO AUTOMÁTICAS
-    const fechaActual = new Date(); // La compu detecta el día real (ej: 6 de Mayo 2026)
-    
-    // Variables para la navegación (Empiezan en el mes actual)
+    const fechaActual = new Date(); 
     let mesViendo = fechaActual.getMonth(); 
     let anioViendo = fechaActual.getFullYear();
-
     const nombresMeses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 
     // 3. ELEMENTOS DEL DOM
@@ -230,6 +207,21 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // ¡Arrancamos! Dibujar el mes actual al cargar la página
-    renderizarCalendario();
+    // ==========================================
+    // 7. LA MAGIA: IR A BUSCAR EL JSON Y ARRANCAR
+    // ==========================================
+    try {
+        // Buscamos el archivo
+        const respuesta = await fetch("examenes.json");
+        
+        // Lo convertimos a formato que JS entienda y lo guardamos en la variable
+        bdExamenes = await respuesta.json();
+        
+        // ¡Recién ahora que tenemos los datos, dibujamos el calendario por primera vez!
+        renderizarCalendario();
+        
+    } catch (error) {
+        console.error("Hubo un error cargando los exámenes:", error);
+        grillaDias.innerHTML = "<p style='grid-column: 1/-1; text-align: center; padding: 20px;'>Error al cargar las fechas de exámenes.</p>";
+    }
 });
