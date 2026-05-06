@@ -15,6 +15,7 @@
           document.body.classList.add("modo-oscuro");
         }
     </script>
+    <script src="calendario.js"></script>
 
     <nav class="navbar">
         <a href="https://www.fcaglp.unlp.edu.ar/" target="_blank" class="fcaglp-link">
@@ -51,60 +52,57 @@
         <div class="hero-content animate-on-scroll">
             <h1>Espectro</h1>
             <p>Agrupación independiente de la Facultad de Ciencias Astronómicas y Geofísicas</p>
+            <a href="#noticias" class="btn-main">Ver Noticias</a>
+        </div>
     </header>
 
-    <main class="container">
-        <section class="animate-on-scroll">
-            <h2>Recursos Académicos</h2>
-            <p>Todo lo que necesitás para cursar, a un clic de distancia.</p>
-            
-            <div class="grid-cards">
-                <a href="https://drive.google.com/drive/folders/1to8UKHmGlyrNEkiYMeEik72I4TTDGEan?usp=sharing" target="_blank" class="card">
-                    <i class="fa-brands fa-google-drive"></i>
-                    <h3>Espectro Apuntes</h3>
-                    <p>Una carpeta de Google Drive con material académico para acompañarte.</p>
-                </a>
-                
-                <a href="https://www.youtube.com/@EspectroObservatorio" target="_blank" class="card">
-                    <i class="fa-brands fa-youtube"></i>
-                    <h3>Canal de YouTube</h3>
-                    <p>Videos con clases de apoyo grabadas y ejercicios resueltos paso a paso.</p>
-                </a>
+    <main class="container calendario-container">
+        <!-- Cabecera del Mes -->
+        <div class="calendario-header">
+            <button id="btn-mes-ant" class="btn-flecha"><i class="fa-solid fa-chevron-left"></i></button>
+            <h2 id="mes-actual-titulo">...</h2>
+            <button id="btn-mes-sig" class="btn-flecha"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
 
-                <a href="https://drive.google.com/drive/folders/1EFKvTokGbKzTfy-N-ocjeowYE_by_NCJ?usp=sharing" target="_blank" class="card">
-                    <i class="fa-solid fa-book-open"></i>
-                    <h3>Planes de Estudio</h3>
-                    <p>Accedé a nuestros planes de estudios de las carreras listos para imprimir.</p>
-                </a>
+        <!-- Grilla del Calendario -->
+        <div class="calendario-mes">
+            <div class="cal-dia-semana">Dom</div>
+            <div class="cal-dia-semana">Lun</div>
+            <div class="cal-dia-semana">Mar</div>
+            <div class="cal-dia-semana">Mié</div>
+            <div class="cal-dia-semana">Jue</div>
+            <div class="cal-dia-semana">Vie</div>
+            <div class="cal-dia-semana">Sáb</div>
 
-                <a href="calendario.html" class="card">
-                    <i class="fa-regular fa-calendar-days"></i>
-                    <h3>Mesas de examen</h3>
-                    <p>Calendario en tiempo real con información de las fechas de mesas de final.</p>
-                </a>
+            <!-- EL JS RELLENARÁ ESTO AUTOMÁTICAMENTE -->
+            <div class="cal-grilla-dias" id="grilla-dias"></div>
+        </div>
 
-                <a href="#" target="_blank" class="card">
-                    <i class="fa-solid fa-clipboard-list"></i>
-                    <h3>Información de las materias</h3>
-                    <p>Entrá a las páginas de las materias, asó como los contactos con ellas y sus profesores.</p>
-                </a>
-
-                <a href="#" target="_blank" class="card">
-                    <i class="fa-solid fa-box-archive"></i>
-                    <h3>Inventario de la Biblioteca (próximamente)</h3>
-                    <p>Consultá qué libros físicos y apuntes hay en la bibloteca del CEGMA.</p>
-                </a>
-            </div>
-        </section>
+        <!-- Filtros de Facultades con estética de la página -->
+        <div class="calendario-filtros">
+            <label class="filtro-btn fcag-filtro">
+                <input type="checkbox" value="FCAG" class="filtro-cb" checked>
+                <span><i class="fa-solid fa-check"></i> FCAG</span>
+            </label>
+            <label class="filtro-btn fce-filtro">
+                <input type="checkbox" value="FCE" class="filtro-cb" checked>
+                <span><i class="fa-solid fa-check"></i> FCE</span>
+            </label>
+            <label class="filtro-btn fcnym-filtro">
+                <input type="checkbox" value="FCNyM" class="filtro-cb" checked>
+                <span><i class="fa-solid fa-check"></i> FCNyM</span>
+            </label>
+        </div>
     </main>
 
     <footer>
+        <div class="footer-logo">Espectro</div>
         <div class="social-icons">
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#"><i class="fa-brands fa-linktree"></i></a>
+            <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" title="LinkTree"><i class="fa-brands fa-linktree"></i></a>
             <a href="https://www.youtube.com/@EspectroObservatorio" target="_blank" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
         </div>
-        <p>&copy; 2026 Espectro</p>
+        <p class="footer-copy">&copy; 2026 Espectro - FCAGLP. Todos los derechos reservados.</p>
     </footer>
 
     <script src="script.js"></script>

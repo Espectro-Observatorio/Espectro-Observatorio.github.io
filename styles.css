@@ -1,13 +1,22 @@
-/* --- VARIABLES Y BASE --- */
+/* ==========================================================================
+   1. VARIABLES Y BASE
+   ========================================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@700;900&display=swap');
 
 :root {
+    /* Paleta Principal */
     --primary: #f97316; /* Naranja */
     --primary-transparent: #f9731699;
     --black: #000000;
     --dark: #1a1a1a;
     --white: #ffffff;
     --gray: #f4f4f4;
+    --light-gray: #f3f4f6;
+    
+    /* Colores de Facultades */
+    --color-fcag: navy;       /* Azul marino */
+    --color-fce: deeppink;    /* Rosa */
+    --color-fcnym: lawngreen; /* Verde manzana */
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -17,6 +26,7 @@ body {
     background-color: var(--white);
     color: var(--black);
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 p {
@@ -28,118 +38,22 @@ p {
     margin-bottom: 2rem;
 }
 
-/* --- FOOTER REDISEÑADO --- */
-footer {
-    background-color: var(--dark);
-    color: var(--white);
-    padding: 3rem 20px 2rem 20px;
-    border-top: 5px solid var(--primary);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-    margin-top: 5rem;
-}
-
-.footer-logo {
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.5rem;
-    color: var(--primary);
-    letter-spacing: 1px;
-}
-
-.social-icons {
-    display: flex;
-    gap: 15px;
-}
-
-.social-icons a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 45px;
-    height: 45px;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    color: var(--white);
-    font-size: 1.2rem;
-    transition: all 0.3s ease;
-}
-
-.social-icons a:hover {
-    background-color: var(--primary);
-    transform: translateY(-5px); /* Pequeño salto hacia arriba */
-    color: var(--white);
-}
-
-.footer-copy {
-    font-size: 0.9rem;
-    color: #aaaaaa;
-}
-
-/* --- SELECCIÓN DE TEXTO --- */
+/* --- SELECCIÓN Y SCROLLBAR --- */
 ::selection {
     background-color: var(--primary);
     color: var(--white);
 }
 
-/* --- BARRA DE DESPLAZAMIENTO (SCROLLBAR) --- */
-::-webkit-scrollbar {
-    width: 10px;
-}
-::-webkit-scrollbar-track {
-    background: var(--dark);
-}
-::-webkit-scrollbar-thumb {
-    background: var(--primary);
-    border-radius: 5px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: #d95e0b; /* Un naranja apenas más oscuro */
-}
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--dark); }
+::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: #d95e0b; }
 
-/* --- DROPDOWN PROYECTOS --- */
-.dropdown {
-    position: relative;
-}
+/* ==========================================================================
+   2. COMPONENTES GENERALES Y ENLACES
+   ========================================================================== */
+a { text-decoration: none; }
 
-.dropdown-content {
-    display: none; /* Oculto por defecto, se maneja con JS */
-    position: absolute;
-    background-color: var(--dark);
-    min-width: 180px;
-    box-shadow: 0px 8px 16px rgba(0,0,0,0.3);
-    z-index: 1;
-    border-radius: 5px;
-    top: 100%;
-    margin-top: 10px;
-    overflow: hidden;
-}
-
-.dropdown-content a {
-    color: var(--white);
-    padding: 12px 20px;
-    display: block;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
-.dropdown-content a:hover {
-    background-color: var(--primary) !important;
-    color: var(--white) !important;
-}
-
-.dropdown-content.show {
-    display: block;
-    animation: fadeIn 0.3s ease;
-}
-
-/* --- ESTILO DE ENLACES --- */
-/* Quitamos el subrayado feo de base a todo */
-a {
-    text-decoration: none;
-}
-
-/* Solo los enlaces que están DENTRO de párrafos tendrán el estilo naranja y subrayado */
 p a, .card p a {
     color: var(--primary);
     text-decoration: underline;
@@ -147,363 +61,177 @@ p a, .card p a {
     font-weight: 600;
     transition: color 0.3s ease;
 }
+p a:hover, .card p a:hover { color: var(--black); }
 
-p a:hover, .card p a:hover {
-    color: var(--black);
-}
-
-/* --- CORRECCIÓN ENLACES VISITADOS (TARJETAS) --- */
-.card, .card:link, .card:visited, .card:active {
-    color: var(--black); /* Fuerza a que el texto sea siempre negro/oscuro */
-    text-decoration: none;
-}
-
-/* Opcional: Que el título de la tarjeta se ponga naranja al pasar el mouse */
-.card h3 {
-    transition: color 0.3s ease;
-}
-
-.card:hover h3 {
-    color: var(--primary);
-}
-
-/* --- NAVBAR RESPONSIVE --- */
-.navbar {
-    background: var(--black);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 5%;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 20px;
-    align-items: center;
-}
-
-.nav-links a {
-    color: var(--white);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.9rem;
-    transition: 0.3s;
-}
-
-.nav-links a:hover, .nav-links a.destacado { color: var(--primary); }
-
-.nav-toggle {
-    display: none; /* Oculto en desktop */
-    background: none;
-    border: none;
-    color: var(--white);
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
-.fcaglp-link {
-    color: var(--white);
-    text-decoration: none;
-    border: 1px solid var(--primary);
-    padding: 5px 12px;
-    border-radius: 5px;
-    font-size: 0.8rem;
-}
-
-/* --- HERO --- */
-.hero {
-    height: 70vh;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://www.fcaglp.unlp.edu.ar/wp-content/uploads/2024/06/004-scaled.jpg') center/cover fixed;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: var(--white);
-}
-
-.hero h1 { font-family: 'Roboto', sans-serif; font-size: 3rem; margin-bottom: 1rem; }
-
-/* --- CONTENEDORES Y GRIDS --- */
-.container { max-width: 1100px; margin: auto; padding: 4rem 20px; }
-
-.grid-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-}
-
-.card {
-    background: var(--gray);
-    padding: 2rem;
-    border-radius: 10px;
-    transition: 0.3s;
-    border-left: 5px solid var(--black);
-}
-
-.card:hover { transform: translateY(-10px); border-left-color: var(--primary); }
-
-/* --- NUEVO ESTILO PROTAGÓNICO PARA LOS ÍCONOS --- */
-.card i {
-    font-size: 2.5rem; /* Tamaño del ícono en sí */
-    color: var(--primary); /* Color naranja para el ícono */
-    background-color: var(--black); /* Fondo negro del contenedor */
-    width: 80px; /* Ancho del cuadradito */
-    height: 80px; /* Alto del cuadradito */
-    display: inline-flex; /* Esto permite centrar el ícono perfectamente */
-    justify-content: center;
-    align-items: center;
-    border-radius: 16px; /* Bordes bien redondeados. Si preferís un círculo perfecto, cambiá a 50% */
-    margin-bottom: 1.5rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Una sombrita sutil para que resalte */
-    transition: all 0.3s ease;
-}
-
-/* Efecto al pasar el mouse por la tarjeta entera */
-.card:hover i {
-    transform: scale(1.1) rotate(5deg); /* Se agranda un poquito y gira apenitas para darle vida */
-    background-color: var(--primary); /* El fondo pasa a naranja */
-    color: var(--white); /* El ícono pasa a blanco */
-}
-
-/* --- MEDIA QUERIES (EL CORAZÓN DEL RESPONSIVE) --- */
-@media (max-width: 992px) {
-    .nav-toggle { display: block; }
-
-    .nav-links {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: var(--black);
-        flex-direction: column;
-        padding: 2rem;
-        gap: 25px;
-        display: none; /* Se activa con JS */
-    }
-
-    .nav-links.active { display: flex; }
-
-    .hero h1 { font-size: 2.2rem; }
-    
-    .hide-mobile { display: none; } /* Oculta texto largo en botones chicos */
-}
-
-
-/* --- RESPONSIVE GENERAL Y CELULARES --- */
-@media (max-width: 992px) {
-    /* ... (tu código anterior de .nav-links active) ... */
-
-    /* El dropdown en el celular empuja hacia abajo, no flota */
-    .dropdown-content {
-        position: relative;
-        box-shadow: none;
-        background: rgba(255, 255, 255, 0.05); /* Un gris super transparente */
-        margin-top: 5px;
-    }
-}
-
-/* Celulares más chicos y "Tu Espacio" */
-@media (max-width: 768px) {
-    /* Arreglo para Tu Espacio */
-    .dashboard-layout {
-        flex-direction: column; /* Pasa de estar uno al lado del otro a apilarse */
-    }
-    
-    .sidebar {
-        width: 100%; /* El menú lateral ocupa todo el ancho */
-        margin-bottom: 20px;
-    }
-    
-    .stats-grid {
-        grid-template-columns: 1fr; /* Fuerza a que los bloques de progreso sean de 1 sola columna */
-        gap: 15px;
-    }
-}
-
-/* --- ANIMACIONES --- */
+/* Animaciones */
 .animate-on-scroll { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
 .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
 
-
-/* --- MODO OSCURO --- */
-/* Esta clase se la vamos a poner y sacar al <body> con JavaScript */
-body.modo-oscuro {
-    --white: #121212; /* El fondo general pasa a ser casi negro */
-    --black: #ffffff; /* El texto general pasa a ser blanco */
-    --gray: #1e1e1e;  /* El fondo de las tarjetas pasa a ser gris oscuro */
-    --dark: #000000;  /* El footer y menú pasan a negro puro */
-}
-
-/* Transición suave para que no sea un golpe a la vista al cambiar */
-body {
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.card, .navbar, footer, .dropdown-content {
+/* ==========================================================================
+   3. NAVBAR, DROPDOWN Y HERO
+   ========================================================================== */
+.navbar {
+    background: var(--black);
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1rem 5%;
+    position: sticky; top: 0; z-index: 1000;
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
-/* Ajuste específico para íconos de recursos en modo oscuro */
-body.modo-oscuro .card i {
-    background-color: #000000;
-    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.05); /* Sombra más clara */
+.nav-links { display: flex; list-style: none; gap: 20px; align-items: center; }
+.nav-links a {
+    color: var(--white); text-decoration: none;
+    font-weight: 600; font-size: 0.9rem; transition: 0.3s;
+}
+.nav-links a:hover, .nav-links a.destacado { color: var(--primary); }
+
+.nav-toggle {
+    display: none; background: none; border: none;
+    color: var(--white); font-size: 1.5rem; cursor: pointer;
 }
 
-/* --- CORRECCIÓN DEL MODO OSCURO (Textos invisibles) --- */
-/* Forzamos a que la variable --white vuelva a ser blanco puro SOLO adentro de estas secciones */
-body.modo-oscuro .navbar,
-body.modo-oscuro footer,
-body.modo-oscuro .dropdown-content,
-body.modo-oscuro .hero,
-body.modo-oscuro #login-section i {
-    --white: #ffffff; 
+.fcaglp-link {
+    color: var(--white); border: 1px solid var(--primary);
+    padding: 5px 12px; border-radius: 5px; font-size: 0.8rem;
 }
 
-/* Y si en algún lado usaste la etiqueta de texto en blanco directamente: */
-body.modo-oscuro .nav-links a,
-body.modo-oscuro .fcaglp-link,
-body.modo-oscuro .nav-toggle {
-    color: #ffffff;
+.dropdown { position: relative; }
+.dropdown-content {
+    display: none; position: absolute;
+    background-color: var(--dark); min-width: 180px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.3);
+    z-index: 1; border-radius: 5px; top: 100%; margin-top: 10px; overflow: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.dropdown-content a {
+    color: var(--white); padding: 12px 20px; display: block;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.dropdown-content a:hover { background-color: var(--primary) !important; color: var(--white) !important; }
+.dropdown-content.show { display: block; animation: fadeIn 0.3s ease; }
+
+.hero {
+    height: 70vh;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://www.fcaglp.unlp.edu.ar/wp-content/uploads/2024/06/004-scaled.jpg') center/cover fixed;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center; color: var(--white);
+}
+.hero h1 { font-family: 'Roboto', sans-serif; font-size: 3rem; margin-bottom: 1rem; }
+
+/* ==========================================================================
+   4. TARJETAS Y CONTENEDORES
+   ========================================================================== */
+.container { max-width: 1100px; margin: auto; padding: 4rem 20px; }
+
+.grid-cards {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px; padding-top: 1rem; padding-bottom: 1rem;
 }
 
-/* --- REDISEÑO DE LA NAVBAR EN MODO OSCURO --- */
-body.modo-oscuro .navbar {
-    background-color: var(--primary) !important; /* Fondo naranja */
+.card {
+    background: var(--gray); padding: 2rem; border-radius: 10px;
+    transition: all 0.3s ease; border-left: 5px solid var(--black);
+    color: var(--black); text-decoration: none;
 }
+.card:link, .card:visited, .card:active { color: var(--black); text-decoration: none; }
+.card:hover { transform: translateY(-10px); border-left-color: var(--primary); }
+.card h3 { transition: color 0.3s ease; }
+.card:hover h3 { color: var(--primary); }
 
-/* Todos los enlaces en negro */
-body.modo-oscuro .nav-links a {
-    color: #000000; 
-    font-weight: 700;
+.card i {
+    font-size: 2.5rem; color: var(--primary); background-color: var(--black);
+    width: 80px; height: 80px; display: inline-flex;
+    justify-content: center; align-items: center;
+    border-radius: 16px; margin-bottom: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); transition: all 0.3s ease;
 }
+.card:hover i { transform: scale(1.1) rotate(5deg); background-color: var(--primary); color: var(--white); }
 
-/* Que se pongan blancos al pasar el mouse (queda muy bien sobre naranja) */
-body.modo-oscuro .nav-links a:hover {
-    color: #ffffff; 
-}
+/* ==========================================================================
+   5. CALENDARIO SEMANAL (Grilla CSS + Sticky Headers)
+   ========================================================================== */
+.header-dashboard { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
 
-/* El botón "Tu Espacio" siempre en blanco para que resalte */
-body.modo-oscuro .nav-links a.destacado {
-    color: #ffffff;
-}
-
-/* El botón de FCAGLP Oficial */
-body.modo-oscuro .fcaglp-link {
-    color: #000000;
-    border-color: #000000;
-}
-
-body.modo-oscuro .fcaglp-link:hover {
-    background-color: #000000;
-    color: var(--primary);
-}
-
-/* Los íconos (el de cambiar el tema y el menú hamburguesa en celu) en negro */
-body.modo-oscuro .nav-toggle,
-body.modo-oscuro #btn-tema {
-    color: #000000 !important; 
-}
-
-/* --- CORRECCIÓN SUBMENÚ PROYECTOS EN MODO OSCURO --- */
-body.modo-oscuro .dropdown-content a {
-    color: var(--primary) !important; /* Texto naranja por defecto */
-}
-body.modo-oscuro .dropdown-content a:hover {
-    color: #ffffff !important; /* Texto blanco */
-}
-
-
-/* --- CALENDARIO SEMANAL (CSS GRID) --- */
-.header-dashboard {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-}
-
-/* --- CALENDARIO SEMANAL (Actualizado para Scroll Horizontal) --- */
 .calendario-semana {
     display: grid;
-    /* Reducimos un poco la hora a 50px y forzamos a los días a tener al menos 120px */
-    grid-template-columns: 50px repeat(5, minmax(120px, 1fr)); 
+    grid-template-columns: 60px repeat(7, 1fr); /* 7 Días */
+    grid-template-rows: auto 1fr;
+    height: 600px;
+    overflow: auto; /* Permite scroll horizontal en pantallas pequeñas */
+    position: relative;
+    border: 1px solid var(--gray);
     background: var(--white);
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    overflow-x: auto; 
-    border: 1px solid var(--gray);
-    /* Ocultamos la barra de scroll fea en algunos navegadores móviles */
-    scrollbar-width: thin; 
+    scrollbar-width: thin;
 }
 
-.cal-vacio { border-bottom: 2px solid var(--gray); border-right: 1px solid var(--gray); }
+/* Z-INDEX 40: Esquina superior izquierda inamovible */
+.cal-vacio-fijo {
+    grid-column: 1; grid-row: 1;
+    position: sticky; top: 0; left: 0;
+    background-color: var(--light-gray);
+    z-index: 40; 
+    border-bottom: 2px solid var(--gray); border-right: 1px solid var(--gray);
+}
 
+/* Z-INDEX 30: Fila de días en la parte superior */
 .cal-dia {
-    text-align: center;
-    padding: 10px 0;
-    font-weight: bold;
-    border-bottom: 2px solid var(--gray);
-    border-right: 1px solid var(--gray);
-    background: var(--light-gray);
+    position: sticky; top: 0;
+    background-color: var(--light-gray);
+    z-index: 30;
+    text-align: center; padding: 15px 0; font-weight: bold;
+    border-bottom: 2px solid var(--gray); border-right: 1px solid var(--gray);
 }
-body.modo-oscuro .cal-dia { background: var(--dark); }
 
+/* Z-INDEX 30: Columna de horas a la izquierda */
 .cal-horas {
-    display: grid;
-    grid-template-rows: repeat(14, 60px); /* 14 horas de 8 a 22, cada una mide 60px alto */
-    text-align: right;
-    padding-right: 10px;
-    border-right: 1px solid var(--gray);
-    font-size: 0.8rem;
-    color: #666;
+    grid-column: 1; grid-row: 2;
+    position: sticky; left: 0;
+    background-color: var(--light-gray);
+    z-index: 30;
+    display: grid; grid-template-rows: repeat(15, 60px); /* 15 Horas */
+    text-align: right; padding-right: 10px; border-right: 1px solid var(--gray);
 }
-.cal-horas span { transform: translateY(-10px); }
+.cal-horas span {
+    font-size: 0.75rem; color: var(--black); opacity: 0.7;
+    height: 60px; display: flex; align-items: center; justify-content: flex-end;
+}
 
+/* Grilla interna de contenidos */
 .cal-grilla {
-    grid-column: 2 / -1; /* Ocupa las 5 columnas de los días */
+    grid-column: 2 / 9; grid-row: 2;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(14, 60px); /* Las mismas 14 horas */
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(15, 60px);
     position: relative;
 }
 
-/* --- BLOQUES DE MATERIA --- */
-.bloque-materia {
-    margin: 2px;
-    padding: 8px;
-    border-radius: 6px;
-    font-size: 0.85rem;
-    color: #ffffff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    overflow: hidden;
-    transition: transform 0.2s;
-    border-left: 4px solid var(--color-materia);
+/* Z-INDEX 1: Líneas de fondo */
+.cal-lineas {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    background-image: linear-gradient(var(--gray) 1px, transparent 1px);
+    background-size: 100% 60px;
+    z-index: 1;
 }
 
-.bloque-materia:hover {
-    transform: scale(1.02);
-    cursor: pointer;
-    z-index: 10;
+/* Z-INDEX 10-15: Tarjetas de materias */
+.bloque-materia {
+    margin: 2px; padding: 8px; border-radius: 6px;
+    font-size: 0.85rem; color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); overflow: hidden;
+    transition: transform 0.2s; border-left: 4px solid var(--color-materia);
+    position: relative; z-index: 10;
 }
+.bloque-materia:hover { transform: scale(1.02); cursor: pointer; z-index: 15; }
 
 .titulo-bloque { display: block; font-weight: bold; margin-bottom: 3px; }
 .detalle-bloque { font-size: 0.75rem; opacity: 0.9; display: block; }
 
-/* El truco visual: Teoría vs Práctica */
-/* Teoría: Fondo sólido semi-transparente del color elegido */
-.bloque-materia.teoria {
-    background-color: color-mix(in srgb, var(--color-materia) 85%, black);
-}
-
-/* Práctica: El mismo color pero con un rayado diagonal sutil */
+.bloque-materia.teoria { background-color: color-mix(in srgb, var(--color-materia) 85%, black); }
 .bloque-materia.practica {
-    background: repeating-linear-gradient(
-        45deg,
+    background: repeating-linear-gradient(45deg,
         color-mix(in srgb, var(--color-materia) 85%, black),
         color-mix(in srgb, var(--color-materia) 85%, black) 10px,
         color-mix(in srgb, var(--color-materia) 70%, black) 10px,
@@ -511,65 +239,149 @@ body.modo-oscuro .cal-dia { background: var(--dark); }
     );
 }
 
-/* --- BOTÓN FLOTANTE Y MODAL --- */
+/* ==========================================================================
+   6. CALENDARIO PÚBLICO MENSUAL
+   ========================================================================== */
+.calendario-container { display: flex; flex-direction: column; padding-top: 1rem; margin-bottom: 2rem; }
+.calendario-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+
+.calendario-mes {
+    display: grid; grid-template-columns: repeat(7, 1fr); grid-template-rows: 40px auto;
+    background: var(--white); border: 1px solid var(--gray); border-radius: 10px;
+}
+.cal-dia-semana {
+    text-align: center; font-weight: bold; padding: 10px 0;
+    background: var(--light-gray); border-bottom: 2px solid var(--gray);
+}
+
+.cal-grilla-dias {
+    grid-column: 1 / -1; display: grid; grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6, 9.8vh);
+}
+
+.dia-celda {
+    border-right: 1px solid var(--gray); border-bottom: 1px solid var(--gray);
+    padding: 5px; display: flex; flex-direction: column; gap: 3px;
+    position: relative; overflow: visible;
+}
+.dia-celda:hover, .dia-celda:has(.dia-tooltip.visible) { z-index: 10; }
+.dia-celda:nth-child(7n) { border-right: none; }
+.dia-celda:nth-child(n+36) { border-bottom: none; }
+.dia-celda:nth-child(36) { border-bottom-left-radius: 9px; }
+.dia-celda:nth-child(42) { border-bottom-right-radius: 9px; }
+
+.dia-otro-mes { background-color: #e5e7eb; }
+.dia-otro-mes .numero-dia { color: #6b7280; }
+.dia-otro-mes .indicadores-container { opacity: 0.2; }
+
+.dia-hoy { border: 3px solid var(--primary); background-color: rgba(249, 115, 22, 0.05); }
+.dia-hoy .numero-dia { color: var(--primary); }
+
+.dia-pasado { background-color: #f9fafb; }
+.dia-pasado .numero-dia { color: var(--black) !important; color: #aaa; }
+.dia-pasado .indicadores-container { opacity: 0.5; }
+
+.numero-dia { font-weight: bold; font-size: 0.9rem; align-self: flex-end; color: var(--black); }
+.dia-vacio { background: transparent; border-right: 1px solid var(--gray); border-bottom: 1px solid var(--gray); }
+
+/* Eventos y Filtros Mensuales */
+.evento-bloque {
+    font-size: 0.7rem; padding: 2px 4px; border-radius: 3px; color: white;
+    text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.fcag-mesa { background-color: var(--color-fcag); }
+.fce-mesa { background-color: var(--color-fce); }
+.fcnym-mesa { background-color: var(--color-fcnym); color: black; }
+
+.fcag-inscripcion { background: repeating-linear-gradient(45deg, var(--color-fcag), var(--color-fcag) 5px, rgba(0,0,128,0.7) 5px, rgba(0,0,128,0.7) 10px); }
+.fce-inscripcion { background: repeating-linear-gradient(45deg, var(--color-fce), var(--color-fce) 5px, rgba(255,20,147,0.7) 5px, rgba(255,20,147,0.7) 10px); }
+.fcnym-inscripcion { background: repeating-linear-gradient(45deg, var(--color-fcnym), var(--color-fcnym) 5px, rgba(124,252,0,0.7) 5px, rgba(124,252,0,0.7) 10px); color: black; }
+
+.indicadores-container { display: flex; gap: 4px; flex-wrap: wrap; margin-top: auto; justify-content: flex-end; }
+.indicador { width: 12px; height: 12px; border-radius: 4px; flex-shrink: 0; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+
+/* Estética Botones y Filtros Mensual */
+.btn-flecha {
+    background: var(--white); color: var(--primary); border: 2px solid var(--primary);
+    border-radius: 50%; width: 40px; height: 40px; font-size: 1.2rem; cursor: pointer;
+    transition: all 0.3s; display: flex; justify-content: center; align-items: center;
+}
+.btn-flecha:hover { background: var(--primary); color: white; }
+
+.calendario-filtros { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; padding: 15px 0; }
+.filtro-btn { cursor: pointer; user-select: none; }
+.filtro-btn input { display: none; }
+.filtro-btn span {
+    display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px;
+    border-radius: 20px; border: 2px solid var(--gray); color: var(--black); font-weight: bold; transition: all 0.3s;
+}
+.filtro-btn span i { display: none; }
+.filtro-btn:has(input:checked) span i { display: inline-block; }
+.filtro-btn.fcag-filtro:has(input:checked) span { border-color: var(--color-fcag); color: var(--color-fcag); background: rgba(0,0,128,0.05); }
+.filtro-btn.fce-filtro:has(input:checked) span { border-color: var(--color-fce); color: var(--color-fce); background: rgba(255,20,147,0.05); }
+.filtro-btn.fcnym-filtro:has(input:checked) span { border-color: var(--color-fcnym); color: #2c5e00; background: rgba(124,252,0,0.1); }
+
+/* Tooltips */
+.dia-tooltip {
+    position: absolute; bottom: 110%; left: 50%; transform: translateX(-50%);
+    background: var(--dark); color: white; padding: 10px; border-radius: 8px;
+    width: max-content; max-width: 200px; font-size: 0.8rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2); opacity: 0; visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease; z-index: 50; pointer-events: auto; padding-top: 25px;
+}
+.dia-tooltip.visible { opacity: 1 !important; visibility: visible !important; }
+.btn-cerrar-tt { position: absolute; top: 5px; right: 8px; background: none; border: none; color: #ccc; font-size: 1rem; cursor: pointer; transition: color 0.2s; }
+.btn-cerrar-tt:hover { color: white; }
+.dia-tooltip::after {
+    content: ''; position: absolute; top: 100%; left: 50%; margin-left: -5px;
+    border-width: 5px; border-style: solid; border-color: var(--dark) transparent transparent transparent;
+}
+.dia-tooltip.pos-izquierda { left: -10px; transform: none; }
+.dia-tooltip.pos-izquierda::after { left: 20px; margin-left: 0; }
+.dia-tooltip.pos-derecha { left: auto; right: -10px; transform: none; }
+.dia-tooltip.pos-derecha::after { left: auto; right: 20px; margin-left: 0; }
+.dia-tooltip.pos-abajo { bottom: auto; top: 110%; }
+.dia-tooltip.pos-abajo::after { top: auto; bottom: 100%; border-color: transparent transparent var(--dark) transparent; }
+
+@media (hover: hover) and (min-width: 769px) {
+    .calendario-mes:not(.tooltip-fijo) .dia-celda:hover .dia-tooltip { opacity: 1; visibility: visible; }
+    .calendario-mes:not(.tooltip-fijo) .dia-celda:hover { z-index: 10; }
+}
+
+.dia-tooltip strong { display: block; margin-bottom: 8px; border-bottom: 1px solid #444; padding-bottom: 4px; color: var(--primary); }
+.tooltip-item { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
+
+/* ==========================================================================
+   7. MODALES Y BOTONES FLOTANTES
+   ========================================================================== */
 .btn-flotante {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background-color: var(--primary);
-    color: white;
-    border: none;
-    font-size: 1.5rem;
-    box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4);
-    cursor: pointer;
-    transition: transform 0.3s;
-    z-index: 100;
+    position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
+    border-radius: 50%; background-color: var(--primary); color: white;
+    border: none; font-size: 1.5rem; box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4);
+    cursor: pointer; transition: transform 0.3s; z-index: 100;
 }
 .btn-flotante:hover { transform: scale(1.1) rotate(90deg); }
 
 .modal-overlay {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.6);
-    display: none; /* Oculto por defecto */
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6); display: none; justify-content: center; align-items: center; z-index: 1000;
 }
-
 .modal-content {
-    background: var(--white);
-    padding: 2rem;
-    border-radius: 12px;
-    width: 90%;
-    max-width: 500px;
-    position: relative;
-    max-height: 90vh;
-    overflow-y: auto;
+    background: var(--white); padding: 2rem; border-radius: 12px; width: 90%;
+    max-width: 500px; position: relative; max-height: 90vh; overflow-y: auto;
 }
-body.modo-oscuro .modal-content { background: var(--dark); border: 1px solid #333; }
-
 .cerrar-modal {
-    position: absolute; top: 15px; right: 15px;
-    background: none; border: none; font-size: 1.5rem; cursor: pointer;
-    color: var(--black);
+    position: absolute; top: 15px; right: 15px; background: none; border: none;
+    font-size: 1.5rem; cursor: pointer; color: var(--black);
 }
 
 .form-grupo { display: flex; flex-direction: column; margin-bottom: 15px; flex: 1; }
 .form-grupo label { font-size: 0.85rem; font-weight: bold; margin-bottom: 5px; color: var(--black); }
 .form-row { display: flex; gap: 15px; }
-
-/* Estilos de inputs generales */
 .form-grupo input, .form-grupo select {
-    padding: 10px; border: 1px solid #ccc; border-radius: 6px;
-    background: transparent; color: var(--black);
+    padding: 10px; border: 1px solid #ccc; border-radius: 6px; background: transparent; color: var(--black);
 }
-body.modo-oscuro .form-grupo input, body.modo-oscuro .form-grupo select { border-color: #444; }
 
-/* Pestañas del Modal */
 .modal-tabs { display: flex; border-bottom: 2px solid var(--gray); margin-bottom: 20px; }
 .tab-btn {
     flex: 1; background: none; border: none; padding: 10px; font-weight: bold;
@@ -577,185 +389,102 @@ body.modo-oscuro .form-grupo input, body.modo-oscuro .form-grupo select { border
 }
 .tab-btn.activo { color: var(--primary); border-bottom-color: var(--primary); }
 
-/* --- RESPONSIVE PARA EL DASHBOARD Y MODAL --- */
-@media (max-width: 768px) {
-    /* El título y los botones de vista se apilan */
-    .header-dashboard {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
-    }
+/* ==========================================================================
+   8. FOOTER
+   ========================================================================== */
+footer {
+    background-color: var(--dark); color: var(--white);
+    padding: 3rem 20px 2rem 20px; border-top: 5px solid var(--primary);
+    display: flex; flex-direction: column; align-items: center; gap: 1.5rem; margin-top: 5rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.footer-logo { font-family: 'Roboto', sans-serif; font-size: 1.5rem; color: var(--primary); letter-spacing: 1px; }
+.social-icons { display: flex; gap: 15px; }
+.social-icons a {
+    display: flex; justify-content: center; align-items: center;
+    width: 45px; height: 45px; background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%; color: var(--white); font-size: 1.2rem; transition: all 0.3s ease;
+}
+.social-icons a:hover { background-color: var(--primary); transform: translateY(-5px); color: var(--white); }
+.footer-copy { font-size: 0.9rem; color: #aaaaaa; }
 
-    /* El modal aprovecha más la pantalla y reduce los márgenes internos */
-    .modal-content {
-        width: 95%;
-        padding: 1.5rem;
-        max-height: 85vh; /* Evita que el teclado del celu tape todo */
-    }
-
-    /* Rompemos las filas del formulario para que queden en una sola columna */
-    .form-row {
-        flex-direction: column;
-        gap: 0;
-    }
-    
-    /* Le devolvemos el margen inferior a los inputs que ahora están apilados */
-    .form-row .form-grupo {
-        margin-bottom: 15px;
-    }
-
-    /* Ajustamos el tamaño del texto en los bloques para que entren mejor */
-    .bloque-materia {
-        font-size: 0.75rem;
-        padding: 5px;
-    }
-    
-    .titulo-bloque {
-        font-size: 0.8rem;
-    }
-    
-    .detalle-bloque {
-        font-size: 0.7rem;
-    }
+/* ==========================================================================
+   9. MODO OSCURO GLOBAL
+   ========================================================================== */
+body.modo-oscuro {
+    --white: #121212;
+    --black: #ffffff;
+    --gray: #1e1e1e;
+    --dark: #000000;
+    --light-gray: #000000; /* Asegura el fondo oscuro inmovilizado en calendarios */
 }
 
-/* --- AJUSTES DE CALENDARIO INMOVILIZADO (STICKY) --- */
+/* Excepciones de contraste (Forzar texto visible) */
+body.modo-oscuro .navbar, body.modo-oscuro footer, body.modo-oscuro .dropdown-content,
+body.modo-oscuro .hero, body.modo-oscuro #login-section i { --white: #ffffff; }
 
-/* --- 1. RESPONSIVE DEL ANCHO (El problema de la compu) --- */
-.calendario-semana {
-    display: grid;
-    /* Por defecto (para compu), se reparten el espacio exacto sin forzar scroll horizontal */
-    grid-template-columns: 60px repeat(7, 1fr); 
-    grid-template-rows: auto 1fr;
-    height: 600px;
-    overflow: auto;
-    position: relative;
-    border: 1px solid var(--gray);
-    background: var(--white);
-    border-radius: 10px;
-}
+body.modo-oscuro .nav-links a, body.modo-oscuro .fcaglp-link, body.modo-oscuro .nav-toggle { color: #ffffff; }
 
-/* Solo en pantallas chicas activamos el ancho mínimo para forzar el scroll horizontal */
+/* Navbar Oscura */
+body.modo-oscuro .navbar { background-color: var(--primary) !important; }
+body.modo-oscuro .nav-links a { color: #000000; font-weight: 700; }
+body.modo-oscuro .nav-links a:hover, body.modo-oscuro .nav-links a.destacado { color: #ffffff; }
+body.modo-oscuro .fcaglp-link { color: #000000; border-color: #000000; }
+body.modo-oscuro .fcaglp-link:hover { background-color: #000000; color: var(--primary); }
+body.modo-oscuro .nav-toggle, body.modo-oscuro #btn-tema { color: #000000 !important; }
+
+/* Menú Proyectos */
+body.modo-oscuro .dropdown-content a { color: var(--primary) !important; }
+body.modo-oscuro .dropdown-content a:hover { color: #ffffff !important; }
+
+/* Tarjetas y UI Oscura */
+body.modo-oscuro .card i { background-color: #000000; box-shadow: 0 4px 10px rgba(255, 255, 255, 0.05); }
+body.modo-oscuro .modal-content { background: var(--dark); border: 1px solid #333; }
+body.modo-oscuro .form-grupo input, body.modo-oscuro .form-grupo select { border-color: #444; }
+body.modo-oscuro .btn-flecha { background: transparent; }
+
+/* Calendarios en Modo Oscuro */
+body.modo-oscuro .cal-vacio-fijo, body.modo-oscuro .cal-dia, body.modo-oscuro .cal-horas { background: var(--dark); }
+body.modo-oscuro .dia-otro-mes { background-color: #2a2a2a; }
+body.modo-oscuro .dia-otro-mes .numero-dia { color: #9ca3af; }
+
+/* ==========================================================================
+   10. MEDIA QUERIES (Responsive)
+   ========================================================================== */
 @media (max-width: 992px) {
-    .calendario-semana {
-        grid-template-columns: 60px repeat(7, minmax(120px, 1fr)); 
+    /* Navbar */
+    .nav-toggle { display: block; }
+    .nav-links {
+        position: absolute; top: 100%; left: 0; width: 100%;
+        background: var(--black); flex-direction: column; padding: 2rem; gap: 25px; display: none;
     }
-}
-
-/* Esquina superior izquierda que siempre se queda ahí */
-/* --- 2. FONDOS SOLIDOS Y PRIORIDADES (El problema del modo claro y superposición) --- */
-
-/* Esquina superior izquierda: La prioridad máxima (Z-Index 40) */
-.cal-vacio-fijo {
-    grid-column: 1;
-    grid-row: 1;
-    position: sticky;
-    top: 0;
-    left: 0;
-    background-color: #f3f4f6; /* Un gris muy clarito y 100% sólido */
-    z-index: 40; 
-    border-bottom: 2px solid var(--gray);
-    border-right: 1px solid var(--gray);
-}
-body.modo-oscuro .cal-vacio-fijo { background: var(--dark); }
-
-/* Encabezados de días siempre visibles arriba */
-/* Días: Se quedan arriba (Z-Index 30) */
-.cal-dia {
-    position: sticky;
-    top: 0;
-    background-color: #f3f4f6; /* Sólido */
-    z-index: 30;
-    text-align: center;
-    padding: 15px 0;
-    font-weight: bold;
-    border-bottom: 2px solid var(--gray);
-    border-right: 1px solid var(--gray);
-}
-body.modo-oscuro .cal-dia { background: var(--dark); }
-
-/* Columna de horas siempre visible a la izquierda */
-/* Horas: Se quedan a la izquierda (Z-Index 30) */
-.cal-horas {
-    grid-column: 1;
-    grid-row: 2;
-    position: sticky;
-    left: 0;
-    background-color: #f3f4f6; /* Sólido */
-    z-index: 30;
-    display: grid;
-    grid-template-rows: repeat(15, 60px); 
-    text-align: right;
-    padding-right: 10px;
-    border-right: 1px solid var(--gray);
-}
-body.modo-oscuro .cal-horas { background: var(--dark); }
-
-/* Corrección de la posición del texto de las horas para que no parezca tachado */
-.cal-horas span {
-    font-size: 0.75rem;
-    color: var(--black);
-    opacity: 0.7;
-    /* Bajamos el texto 30px para que quede centrado entre las líneas, no sobre ellas */
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-}
-
-/* Grilla de contenidos */
-.cal-grilla {
-    grid-column: 2 / 9;
-    grid-row: 2; /* Forzamos a que empiece abajo de los días */
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: repeat(15, 60px);
-    position: relative;
-}
-
-/* Líneas horizontales de guía */
-.cal-lineas {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    pointer-events: none;
-    background-image: linear-gradient(var(--gray) 1px, transparent 1px);
-    background-size: 100% 60px;
-}
-
-/* --- AJUSTES DE BLOQUES PARA 7 DÍAS --- */
-/* Ahora grid-column irá del 1 (Domingo) al 7 (Sábado) */
-/* grid-row irá del 1 (07:00-08:00) al 15 (21:00-22:00) */
-
-/* --- 3. LÍNEAS AL FONDO Y TARJETAS AL FRENTE --- */
-
-.cal-lineas {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    pointer-events: none;
-    background-image: linear-gradient(var(--gray) 1px, transparent 1px);
-    background-size: 100% 60px;
-    z-index: 1; /* Mandamos las líneas bien al fondo */
-}
-
-.bloque-materia {
-    margin: 2px;
-    padding: 8px;
-    border-radius: 6px;
-    font-size: 0.85rem;
-    color: #ffffff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    overflow: hidden;
-    transition: transform 0.2s;
-    border-left: 4px solid var(--color-materia);
+    .nav-links.active { display: flex; }
     
-    /* Agregamos esto para que las tarjetas tapen a las líneas */
-    position: relative; 
-    z-index: 10; /* Mayor que las líneas (1), menor que las horas/días (30) */
+    /* Dropdown Celular */
+    .dropdown-content { position: relative; box-shadow: none; background: rgba(255, 255, 255, 0.05); margin-top: 5px; }
+    
+    /* Calendario Semanal Celular (Fuerza ancho mínimo para scroll horizontal) */
+    .calendario-semana { grid-template-columns: 60px repeat(7, minmax(120px, 1fr)); }
+    
+    /* Utilidades */
+    .hero h1 { font-size: 2.2rem; }
+    .hide-mobile { display: none; }
 }
 
-/* Para que al pasar el mouse destaquen aún más */
-.bloque-materia:hover {
-    transform: scale(1.02);
-    cursor: pointer;
-    z-index: 15; 
+@media (max-width: 768px) {
+    /* Dashboard Layout */
+    .dashboard-layout { flex-direction: column; }
+    .sidebar { width: 100%; margin-bottom: 20px; }
+    .stats-grid { grid-template-columns: 1fr; gap: 15px; }
+
+    /* Modales y Botones Celular */
+    .header-dashboard { flex-direction: column; align-items: flex-start; gap: 15px; }
+    .modal-content { width: 95%; padding: 1.5rem; max-height: 85vh; }
+    .form-row { flex-direction: column; gap: 0; }
+    .form-row .form-grupo { margin-bottom: 15px; }
+
+    /* Textos Pequeños en Calendario */
+    .bloque-materia { font-size: 0.75rem; padding: 5px; }
+    .titulo-bloque { font-size: 0.8rem; }
+    .detalle-bloque { font-size: 0.7rem; }
 }
