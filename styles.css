@@ -447,6 +447,7 @@ body.modo-oscuro .btn-flecha { background: transparent; }
 body.modo-oscuro .cal-vacio-fijo, body.modo-oscuro .cal-dia, body.modo-oscuro .cal-horas { background: var(--dark); }
 body.modo-oscuro .dia-otro-mes { background-color: #2a2a2a; }
 body.modo-oscuro .dia-otro-mes .numero-dia { color: #9ca3af; }
+body.modo-oscuro .dia-pasado { background-color: #1a1a1a; }
 
 /* ==========================================================================
    10. MEDIA QUERIES (Responsive)
