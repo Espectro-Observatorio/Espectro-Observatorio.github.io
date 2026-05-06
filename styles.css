@@ -419,6 +419,7 @@ body.modo-oscuro {
     --gray: #1e1e1e;
     --dark: #000000;
     --light-gray: #000000; /* Asegura el fondo oscuro inmovilizado en calendarios */
+    --color-fcag: #6495ED
 }
 
 /* Excepciones de contraste (Forzar texto visible) */
