@@ -1,0 +1,811 @@
+/* --- VARIABLES Y BASE --- */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@700;900&display=swap');
+
+:root {
+    --primary: #f97316; /* Naranja */
+    --primary-transparent: #f9731699;
+    --black: #000000;
+    --dark: #1a1a1a;
+    --white: #ffffff;
+    --gray: #f4f4f4;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--white);
+    color: var(--black);
+    overflow-x: hidden;
+}
+
+p {
+    text-align: justify;
+}
+
+.main-text {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+/* --- FOOTER REDISEÑADO --- */
+footer {
+    background-color: var(--dark);
+    color: var(--white);
+    padding: 3rem 20px 2rem 20px;
+    border-top: 5px solid var(--primary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 5rem;
+}
+
+.footer-logo {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+    color: var(--primary);
+    letter-spacing: 1px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: var(--white);
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    background-color: var(--primary);
+    transform: translateY(-5px); /* Pequeño salto hacia arriba */
+    color: var(--white);
+}
+
+.footer-copy {
+    font-size: 0.9rem;
+    color: #aaaaaa;
+}
+
+/* --- SELECCIÓN DE TEXTO --- */
+::selection {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+/* --- BARRA DE DESPLAZAMIENTO (SCROLLBAR) --- */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: var(--dark);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #d95e0b; /* Un naranja apenas más oscuro */
+}
+
+/* --- DROPDOWN PROYECTOS --- */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none; /* Oculto por defecto, se maneja con JS */
+    position: absolute;
+    background-color: var(--dark);
+    min-width: 180px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.3);
+    z-index: 1;
+    border-radius: 5px;
+    top: 100%;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.dropdown-content a {
+    color: var(--white);
+    padding: 12px 20px;
+    display: block;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.dropdown-content a:hover {
+    background-color: var(--primary) !important;
+    color: var(--white) !important;
+}
+
+.dropdown-content.show {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+/* --- ESTILO DE ENLACES --- */
+/* Quitamos el subrayado feo de base a todo */
+a {
+    text-decoration: none;
+}
+
+/* Solo los enlaces que están DENTRO de párrafos tendrán el estilo naranja y subrayado */
+p a, .card p a {
+    color: var(--primary);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+p a:hover, .card p a:hover {
+    color: var(--black);
+}
+
+/* --- CORRECCIÓN ENLACES VISITADOS (TARJETAS) --- */
+.card, .card:link, .card:visited, .card:active {
+    color: var(--black); /* Fuerza a que el texto sea siempre negro/oscuro */
+    text-decoration: none;
+}
+
+/* Opcional: Que el título de la tarjeta se ponga naranja al pasar el mouse */
+.card h3 {
+    transition: color 0.3s ease;
+}
+
+.card:hover h3 {
+    color: var(--primary);
+}
+
+/* --- NAVBAR RESPONSIVE --- */
+.navbar {
+    background: var(--black);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.nav-links a:hover, .nav-links a.destacado { color: var(--primary); }
+
+.nav-toggle {
+    display: none; /* Oculto en desktop */
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.fcaglp-link {
+    color: var(--white);
+    text-decoration: none;
+    border: 1px solid var(--primary);
+    padding: 5px 12px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+}
+
+/* --- HERO --- */
+.hero {
+    height: 70vh;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://www.fcaglp.unlp.edu.ar/wp-content/uploads/2024/06/004-scaled.jpg') center/cover fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+}
+
+.hero h1 { font-family: 'Roboto', sans-serif; font-size: 3rem; margin-bottom: 1rem; }
+
+/* --- CONTENEDORES Y GRIDS --- */
+.container { max-width: 1100px; margin: auto; padding: 4rem 20px; }
+
+.grid-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.card {
+    background: var(--gray);
+    padding: 2rem;
+    border-radius: 10px;
+    transition: 0.3s;
+    border-left: 5px solid var(--black);
+}
+
+.card:hover { transform: translateY(-10px); border-left-color: var(--primary); }
+
+/* --- NUEVO ESTILO PROTAGÓNICO PARA LOS ÍCONOS --- */
+.card i {
+    font-size: 2.5rem; /* Tamaño del ícono en sí */
+    color: var(--primary); /* Color naranja para el ícono */
+    background-color: var(--black); /* Fondo negro del contenedor */
+    width: 80px; /* Ancho del cuadradito */
+    height: 80px; /* Alto del cuadradito */
+    display: inline-flex; /* Esto permite centrar el ícono perfectamente */
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px; /* Bordes bien redondeados. Si preferís un círculo perfecto, cambiá a 50% */
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Una sombrita sutil para que resalte */
+    transition: all 0.3s ease;
+}
+
+/* Efecto al pasar el mouse por la tarjeta entera */
+.card:hover i {
+    transform: scale(1.1) rotate(5deg); /* Se agranda un poquito y gira apenitas para darle vida */
+    background-color: var(--primary); /* El fondo pasa a naranja */
+    color: var(--white); /* El ícono pasa a blanco */
+}
+
+/* --- MEDIA QUERIES (EL CORAZÓN DEL RESPONSIVE) --- */
+@media (max-width: 992px) {
+    .nav-toggle { display: block; }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--black);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 25px;
+        display: none; /* Se activa con JS */
+    }
+
+    .nav-links.active { display: flex; }
+
+    .hero h1 { font-size: 2.2rem; }
+    
+    .hide-mobile { display: none; } /* Oculta texto largo en botones chicos */
+}
+
+
+/* --- RESPONSIVE GENERAL Y CELULARES --- */
+@media (max-width: 992px) {
+    /* ... (tu código anterior de .nav-links active) ... */
+
+    /* El dropdown en el celular empuja hacia abajo, no flota */
+    .dropdown-content {
+        position: relative;
+        box-shadow: none;
+        background: rgba(255, 255, 255, 0.05); /* Un gris super transparente */
+        margin-top: 5px;
+    }
+}
+
+/* Celulares más chicos y "Tu Espacio" */
+@media (max-width: 768px) {
+    /* Arreglo para Tu Espacio */
+    .dashboard-layout {
+        flex-direction: column; /* Pasa de estar uno al lado del otro a apilarse */
+    }
+    
+    .sidebar {
+        width: 100%; /* El menú lateral ocupa todo el ancho */
+        margin-bottom: 20px;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr; /* Fuerza a que los bloques de progreso sean de 1 sola columna */
+        gap: 15px;
+    }
+}
+
+/* --- ANIMACIONES --- */
+.animate-on-scroll { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
+.animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+
+
+/* --- MODO OSCURO --- */
+/* Esta clase se la vamos a poner y sacar al <body> con JavaScript */
+body.modo-oscuro {
+    --white: #121212; /* El fondo general pasa a ser casi negro */
+    --black: #ffffff; /* El texto general pasa a ser blanco */
+    --gray: #1e1e1e;  /* El fondo de las tarjetas pasa a ser gris oscuro */
+    --dark: #000000;  /* El footer y menú pasan a negro puro */
+}
+
+/* Transición suave para que no sea un golpe a la vista al cambiar */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.card, .navbar, footer, .dropdown-content {
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+/* Ajuste específico para íconos de recursos en modo oscuro */
+body.modo-oscuro .card i {
+    background-color: #000000;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.05); /* Sombra más clara */
+}
+
+/* --- CORRECCIÓN DEL MODO OSCURO (Textos invisibles) --- */
+/* Forzamos a que la variable --white vuelva a ser blanco puro SOLO adentro de estas secciones */
+body.modo-oscuro .navbar,
+body.modo-oscuro footer,
+body.modo-oscuro .dropdown-content,
+body.modo-oscuro .hero,
+body.modo-oscuro #login-section i {
+    --white: #ffffff; 
+}
+
+/* Y si en algún lado usaste la etiqueta de texto en blanco directamente: */
+body.modo-oscuro .nav-links a,
+body.modo-oscuro .fcaglp-link,
+body.modo-oscuro .nav-toggle {
+    color: #ffffff;
+}
+
+/* --- REDISEÑO DE LA NAVBAR EN MODO OSCURO --- */
+body.modo-oscuro .navbar {
+    background-color: var(--primary) !important; /* Fondo naranja */
+}
+
+/* Todos los enlaces en negro */
+body.modo-oscuro .nav-links a {
+    color: #000000; 
+    font-weight: 700;
+}
+
+/* Que se pongan blancos al pasar el mouse (queda muy bien sobre naranja) */
+body.modo-oscuro .nav-links a:hover {
+    color: #ffffff; 
+}
+
+/* El botón "Tu Espacio" siempre en blanco para que resalte */
+body.modo-oscuro .nav-links a.destacado {
+    color: #ffffff;
+}
+
+/* El botón de FCAGLP Oficial */
+body.modo-oscuro .fcaglp-link {
+    color: #000000;
+    border-color: #000000;
+}
+
+body.modo-oscuro .fcaglp-link:hover {
+    background-color: #000000;
+    color: var(--primary);
+}
+
+/* Los íconos (el de cambiar el tema y el menú hamburguesa en celu) en negro */
+body.modo-oscuro .nav-toggle,
+body.modo-oscuro #btn-tema {
+    color: #000000 !important; 
+}
+
+/* --- CORRECCIÓN SUBMENÚ PROYECTOS EN MODO OSCURO --- */
+body.modo-oscuro .dropdown-content a {
+    color: var(--primary) !important; /* Texto naranja por defecto */
+}
+body.modo-oscuro .dropdown-content a:hover {
+    color: #ffffff !important; /* Texto blanco */
+}
+
+/* --- CALENDARIO PÚBLICO MENSUAL --- */
+.calendario-container {
+    /* Eliminamos height: calc(...) para que el calendario ocupe lo que tenga que ocupar */
+    display: flex;
+    flex-direction: column;
+    padding-top: 1rem;
+    margin-bottom: 2rem; /* Le damos aire antes del footer */
+}
+
+.calendario-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.calendario-mes {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: 40px auto; 
+    background: var(--white);
+    border: 1px solid var(--gray);
+    border-radius: 10px;
+    /* Recordá: Mantenemos SIN overflow:hidden para que salgan los Tooltips */
+}
+
+.cal-dia-semana {
+    text-align: center;
+    font-weight: bold;
+    padding: 10px 0;
+    background: var(--light-gray);
+    border-bottom: 2px solid var(--gray);
+}
+
+/* --- LA GRILLA DEL MES (Rígida e inamovible) --- */
+.cal-grilla-dias {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    /* Tamaño ABSOLUTAMENTE FIJO: 6 filas de exactamente 9.8vh de alto, haya 0 o 3 eventos */
+    grid-template-rows: repeat(6, 9.8vh); 
+}
+
+.dia-celda {
+    border-right: 1px solid var(--gray);
+    border-bottom: 1px solid var(--gray);
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    position: relative;
+    /* Evita que un exceso de eventos empuje la celda hacia abajo */
+    overflow: visible; 
+}
+
+/* Agregamos esto para que la celda activa esté por encima de las demás */
+.dia-celda:hover,
+.dia-celda:has(.dia-tooltip.visible) {
+    z-index: 10;
+}
+
+/* Quitar el borde derecho a la última columna (Domingo a Sábado -> Sábado es el 7, 14, 21...) */
+.dia-celda:nth-child(7n) {
+    border-right: none;
+}
+
+/* Quitar el borde inferior a la última fila (De la celda 36 a la 42) */
+.dia-celda:nth-child(n+36) {
+    border-bottom: none;
+}
+
+/* Redondear las esquinas directamente en las celdas inferiores de las puntas */
+.dia-celda:nth-child(36) { border-bottom-left-radius: 9px; } /* Esquina inferior izquierda */
+.dia-celda:nth-child(42) { border-bottom-right-radius: 9px; } /* Esquina inferior derecha */
+
+/* --- DÍAS DE OTROS MESES (Relleno de la grilla) --- */
+.dia-otro-mes {
+    background-color: #e5e7eb; 
+}
+body.modo-oscuro .dia-otro-mes { 
+    background-color: #2a2a2a; 
+}
+
+/* Atenuamos fuerte el contenido para que pase a un segundo plano */
+.dia-otro-mes .numero-dia { 
+    color: #6b7280; /* Gris oscuro */
+}
+body.modo-oscuro .dia-otro-mes .numero-dia { 
+    color: #9ca3af; /* Gris claro */
+}
+
+.dia-otro-mes .indicadores-container { opacity: 0.2; }
+
+.numero-dia {
+    font-weight: bold;
+    font-size: 0.9rem;
+    align-self: flex-end;
+    color: var(--black);
+}
+
+/* Día Actual (Borde naranja del tema principal) */
+.dia-hoy {
+    border: 3px solid var(--primary);
+    background-color: rgba(249, 115, 22, 0.05); /* Naranja muy suave de fondo */
+}
+.dia-hoy .numero-dia { color: var(--primary); }
+
+/* --- DÍAS QUE YA PASARON --- */
+.dia-pasado {
+    background-color: #f9fafb; 
+}
+body.modo-oscuro .dia-pasado { 
+    background-color: #1a1a1a; 
+}
+
+/* FORZAMOS el color negro (o blanco en modo oscuro) para que no se vea gris */
+.dia-pasado .numero-dia { 
+    color: var(--black) !important; 
+}
+/*body.modo-oscuro .dia-pasado .numero-dia { 
+    color: var(--white) !important; 
+}*/
+
+/* Solo atenuamos el número y los puntitos, dejando el Tooltip 100% opaco */
+.dia-pasado .numero-dia { color: #aaa; }
+/* Los indicadores se atenúan, pero el número ya no */
+.dia-pasado .indicadores-container { opacity: 0.5; }
+
+/* --- COLORES DE FACULTADES --- */
+:root {
+    --color-fcag: navy; /* Azul marino */
+    --color-fce: deeppink; /* Rosa */
+    --color-fcnym: lawngreen; /* Verde manzana */
+}
+
+/* Eventos Base */
+.evento-bloque {
+    font-size: 0.7rem;
+    padding: 2px 4px;
+    border-radius: 3px;
+    color: white; /* Texto blanco por defecto */
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* MESAS (Sólidos) */
+.fcag-mesa { background-color: var(--color-fcag); }
+.fce-mesa { background-color: var(--color-fce); }
+.fcnym-mesa { 
+    background-color: var(--color-fcnym); 
+    color: black; /* El verde manzana necesita texto negro para leerse */
+}
+
+/* INSCRIPCIONES (Rayados) */
+.fcag-inscripcion {
+    background: repeating-linear-gradient(45deg, var(--color-fcag), var(--color-fcag) 5px, rgba(0,0,128,0.7) 5px, rgba(0,0,128,0.7) 10px);
+}
+.fce-inscripcion {
+    background: repeating-linear-gradient(45deg, var(--color-fce), var(--color-fce) 5px, rgba(255,20,147,0.7) 5px, rgba(255,20,147,0.7) 10px);
+}
+.fcnym-inscripcion {
+    background: repeating-linear-gradient(45deg, var(--color-fcnym), var(--color-fcnym) 5px, rgba(124,252,0,0.7) 5px, rgba(124,252,0,0.7) 10px);
+    color: black;
+}
+
+/* Filtros inferiores */
+.calendario-filtros {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+/* --- INDICADORES (Cuadraditos redondeados) --- */
+.indicadores-container {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    margin-top: auto; /* Empuja los puntitos hacia abajo de la celda */
+    justify-content: flex-end; /* Los alinea a la derecha bajo el número */
+}
+
+.indicador {
+    width: 12px;
+    height: 12px;
+    border-radius: 4px; /* El borde redondeado estilo app */
+    flex-shrink: 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+/* MESAS (Sólidos) */
+.fcag-mesa { background-color: var(--color-fcag); }
+.fce-mesa { background-color: var(--color-fce); }
+.fcnym-mesa { background-color: var(--color-fcnym); }
+
+/* INSCRIPCIONES (Rayados) */
+/* Achicamos la escala del patrón para que se note en un cuadradito de 12px */
+.fcag-inscripcion {
+    background: repeating-linear-gradient(45deg, var(--color-fcag), var(--color-fcag) 2px, rgba(0,0,128,0.6) 2px, rgba(0,0,128,0.6) 4px);
+}
+.fce-inscripcion {
+    background: repeating-linear-gradient(45deg, var(--color-fce), var(--color-fce) 2px, rgba(255,20,147,0.6) 2px, rgba(255,20,147,0.6) 4px);
+}
+.fcnym-inscripcion {
+    background: repeating-linear-gradient(45deg, var(--color-fcnym), var(--color-fcnym) 2px, rgba(124,252,0,0.6) 2px, rgba(124,252,0,0.6) 4px);
+}
+
+/* --- TOOLTIP (Cartelito al pasar el mouse) --- */
+.dia-tooltip {
+    position: absolute;
+    bottom: 110%; /* Aparece por encima de la celda */
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--dark);
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    width: max-content;
+    max-width: 200px;
+    font-size: 0.8rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    
+    /* Oculto por defecto */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    z-index: 50;
+    pointer-events: auto; /* IMPORTANTE: Permitir hacer clic adentro (en la X) */
+    padding-top: 25px; /* Dejamos espacio arriba para la X */
+}
+
+.btn-cerrar-tt {
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    background: none;
+    border: none;
+    color: #ccc;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.btn-cerrar-tt:hover {
+    color: white;
+}
+
+/* Flechita del tooltip */
+.dia-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--dark) transparent transparent transparent;
+}
+
+/* 3. CLASES DE POSICIONAMIENTO INTELIGENTE (El JS las pondrá automáticamente) */
+
+/* Choque Izquierdo (Se alinea a la izquierda de la celda) */
+.dia-tooltip.pos-izquierda {
+    left: -10px;
+    transform: none; /* Quitamos el centrado */
+}
+.dia-tooltip.pos-izquierda::after {
+    left: 20px; /* Movemos el triangulito a la izquierda */
+    margin-left: 0;
+}
+
+/* Choque Derecho (Se alinea a la derecha de la celda) */
+.dia-tooltip.pos-derecha {
+    left: auto;
+    right: -10px;
+    transform: none;
+}
+.dia-tooltip.pos-derecha::after {
+    left: auto;
+    right: 20px; /* Movemos el triangulito a la derecha */
+    margin-left: 0;
+}
+
+/* Choque Arriba (Aparece por debajo de la celda) */
+.dia-tooltip.pos-abajo {
+    bottom: auto;
+    top: 110%;
+}
+.dia-tooltip.pos-abajo::after {
+    top: auto;
+    bottom: 100%; /* El triangulito pasa a estar arriba del tooltip */
+    border-color: transparent transparent var(--dark) transparent; /* Invertimos el color */
+}
+
+/* Mostrar Tooltip al pasar el mouse (Solo en PC) */
+/* --- LÓGICA DE HOVER INTELIGENTE --- */
+
+/* Solo aplicamos hover en pantallas de PC (>768px) 
+   Y SOLO si el calendario NO tiene la clase 'tooltip-fijo' */
+@media (hover: hover) and (min-width: 769px) {
+    .calendario-mes:not(.tooltip-fijo) .dia-celda:hover .dia-tooltip {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    /* Elevamos la celda para que su tooltip tape a los vecinos */
+    .calendario-mes:not(.tooltip-fijo) .dia-celda:hover {
+        z-index: 10;
+    }
+}
+
+/* La celda que tiene el clic fijo siempre queda arriba */
+.dia-celda:has(.dia-tooltip.visible) {
+    z-index: 10;
+}
+
+/* Estructura interna del tooltip */
+.dia-tooltip strong {
+    display: block;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #444;
+    padding-bottom: 4px;
+    color: var(--primary);
+}
+
+.tooltip-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 5px;
+}
+
+/* --- ESTÉTICA DE BOTONES Y FILTROS --- */
+.btn-flecha {
+    background: var(--white);
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    border-radius: 50%;
+    width: 40px; height: 40px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex; justify-content: center; align-items: center;
+}
+.btn-flecha:hover { background: var(--primary); color: white; }
+body.modo-oscuro .btn-flecha { background: transparent; }
+
+/* Casillas de selección (Filtros) */
+.calendario-filtros {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; padding: 15px 0;
+}
+
+.filtro-btn { cursor: pointer; user-select: none; }
+.filtro-btn input { display: none; /* Ocultamos el cuadradito clásico del navegador */ }
+
+.filtro-btn span {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 2px solid var(--gray);
+    color: var(--black);
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+/* Icono de check oculto por defecto */
+.filtro-btn span i { display: none; }
+
+/* Estilos cuando están ACTIVADOS (Usamos :has para detectar el input checked) */
+.filtro-btn:has(input:checked) span i { display: inline-block; }
+
+.filtro-btn.fcag-filtro:has(input:checked) span { 
+    border-color: var(--color-fcag); color: var(--color-fcag); background: rgba(0,0,128,0.05); 
+}
+.filtro-btn.fce-filtro:has(input:checked) span { 
+    border-color: var(--color-fce); color: var(--color-fce); background: rgba(255,20,147,0.05); 
+}
+.filtro-btn.fcnym-filtro:has(input:checked) span { 
+    border-color: var(--color-fcnym); color: #2c5e00; background: rgba(124,252,0,0.1); 
+}
+
+/* Celdas vacías (Para alinear el mes) */
+.dia-vacio { background: transparent; border-right: 1px solid var(--gray); border-bottom: 1px solid var(--gray); }
+
+/* --- TOOLTIP PARA CELULARES --- */
+/* Agregamos una clase .visible que el JS va a poner y sacar al tocar */
+.dia-tooltip.visible {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
