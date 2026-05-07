@@ -40,7 +40,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     codigo: fila.codigo, materia: fila.materia,
                     link_web: fila.link_web, link_drive: fila.link_drive, link_programa: fila.link_programa,
                     mail_materia: fila.mail_materia, promocion: fila.promocion, redictado: fila.redictado,
-                    info_extra: fila.info_extra,
                     perteneceA: {
                         astro: fila.anio_astro ? { anio: fila.anio_astro, cuatri: fila.cuatri_astro, corr: fila.corr_astro } : null,
                         geo: fila.anio_geo ? { anio: fila.anio_geo, cuatri: fila.cuatri_geo, corr: fila.corr_geo } : null,
@@ -62,9 +61,6 @@ document.addEventListener("DOMContentLoaded", () => {
         grilla.innerHTML = "";
         const textoBusqueda = buscador.value.toLowerCase().trim();
         modoBusqueda = textoBusqueda.length > 0;
-
-        tabsContainer.style.display = modoBusqueda ? "none" : "flex";
-
         let cantidadMostrada = 0;
 
         Object.values(materiasAgrupadas).forEach(mat => {
@@ -161,7 +157,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 ${mat.link_drive ? `<a href="${mat.link_drive}" target="_blank" class="tag" style="background:#dcfce7; color:#15803d; border-color:#bbf7d0;"><i class="fa-brands fa-google-drive"></i> Apuntes</a>` : ""}
                 ${mat.link_programa ? `<a href="${mat.link_programa}" target="_blank" class="tag" style="background:#f3e8ff; color:#7e22ce; border-color:#e9d5ff;"><i class="fa-solid fa-file-pdf"></i> Programa</a>` : ""}
                 ${mat.mail_materia ? `<span class="tag" style="background:var(--gray); color:var(--black);"><i class="fa-solid fa-envelope"></i> ${mat.mail_materia}</span>` : ""}
-                ${mat.info_extra ? `<div style="background:#fff9c4; padding:10px; border-radius:6px; margin:15px 0; border:1px solid #fbc02d; color:#5f4b00;"><strong><i class="fa-solid fa-circle-info"></i> Notas:</strong> ${mat.info_extra}</div>` : ""}
             </div>
             
             <div class="caja-info-materia">
