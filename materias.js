@@ -36,11 +36,35 @@ document.addEventListener("DOMContentLoaded", () => {
         datos.forEach(fila => {
             if (!fila.codigo || fila.codigo.trim() === "") return;
 
+            const parseValorConAclaracion = (raw) => {
+                const texto = (raw || "").toString().trim();
+                if (!texto) return null;
+                const idx = texto.indexOf(",");
+                if (idx === -1) return { valor: texto, aclaracion: "" };
+                return {
+                    valor: texto.slice(0, idx).trim(),
+                    aclaracion: texto.slice(idx + 1).trim()
+                };
+            };
+
+            const agregarItemUnico = (lista, item) => {
+                if (!item || !item.valor) return;
+                const key = `${item.valor}||${item.aclaracion || ""}`;
+                if (!lista.some(x => `${x.valor}||${x.aclaracion || ""}` === key)) {
+                    lista.push(item);
+                }
+            };
+
             if (!materiasAgrupadas[fila.codigo]) {
                 materiasAgrupadas[fila.codigo] = {
                     codigo: fila.codigo, materia: fila.materia,
                     link_web: fila.link_web, link_drive: fila.link_drive, link_programa: fila.link_programa,
-                    mail_materia: fila.mail_materia, promocion: fila.promocion, redictado: fila.redictado,
+                    mail_materia: fila.mail_materia,
+                    links_web: [],
+                    links_drive: [],
+                    links_programa: [],
+                    mails_materia: [],
+                    promocion: fila.promocion, redictado: fila.redictado,
                     prae: fila.prae, curso_verano: fila.curso_verano,
                     info_extra: fila.info_extra,
                     perteneceA: {
@@ -51,6 +75,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     comisiones: []
                 };
             }
+
+            // Agregar links/mails potencialmente repetidos por fila (con o sin aclaración)
+            const mat = materiasAgrupadas[fila.codigo];
+            agregarItemUnico(mat.links_web, parseValorConAclaracion(fila.link_web));
+            agregarItemUnico(mat.links_drive, parseValorConAclaracion(fila.link_drive));
+            agregarItemUnico(mat.links_programa, parseValorConAclaracion(fila.link_programa));
+            agregarItemUnico(mat.mails_materia, parseValorConAclaracion(fila.mail_materia));
+
             materiasAgrupadas[fila.codigo].comisiones.push({
                 nombre: fila.comision, teoria: fila.horario_teoria, practica: fila.horario_practica, otros: fila.horario_otros,
                 profesor: fila.profesor, mail_profe: fila.mail_profe, celular_profe: fila.celular_profe,
@@ -291,10 +323,18 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
             
             <div class="materias-links">
-                ${mat.link_web ? `<a href="${mat.link_web}" target="_blank" class="tag tag-link-web"><i class="fa-solid fa-globe"></i> Página Web</a>` : ""}
-                ${mat.link_drive ? `<a href="${mat.link_drive}" target="_blank" class="tag tag-link-drive"><i class="fa-brands fa-google-drive"></i> Apuntes</a>` : ""}
-                ${mat.link_programa ? `<a href="${mat.link_programa}" target="_blank" class="tag tag-link-programa"><i class="fa-solid fa-file-pdf"></i> Programa</a>` : ""}
-                ${mat.mail_materia ? `<button type="button" class="tag tag-mail-materia btn-copiar-mail-materia" data-mail="${mat.mail_materia}"><i class="fa-solid fa-envelope"></i> ${mat.mail_materia}</button>` : ""}
+                ${(mat.links_web?.length ? mat.links_web : (mat.link_web ? [{ valor: mat.link_web, aclaracion: "" }] : []))
+                    .map(l => `<a href="${l.valor}" target="_blank" class="tag tag-link-web"><i class="fa-solid fa-globe"></i> Página Web${l.aclaracion ? ` (${l.aclaracion})` : ""}</a>`)
+                    .join("")}
+                ${(mat.links_drive?.length ? mat.links_drive : (mat.link_drive ? [{ valor: mat.link_drive, aclaracion: "" }] : []))
+                    .map(l => `<a href="${l.valor}" target="_blank" class="tag tag-link-drive"><i class="fa-brands fa-google-drive"></i> Apuntes${l.aclaracion ? ` (${l.aclaracion})` : ""}</a>`)
+                    .join("")}
+                ${(mat.links_programa?.length ? mat.links_programa : (mat.link_programa ? [{ valor: mat.link_programa, aclaracion: "" }] : []))
+                    .map(l => `<a href="${l.valor}" target="_blank" class="tag tag-link-programa"><i class="fa-solid fa-file-pdf"></i> Programa${l.aclaracion ? ` (${l.aclaracion})` : ""}</a>`)
+                    .join("")}
+                ${(mat.mails_materia?.length ? mat.mails_materia : (mat.mail_materia ? [{ valor: mat.mail_materia, aclaracion: "" }] : []))
+                    .map(m => `<button type="button" class="tag tag-mail-materia btn-copiar-mail-materia" data-mail="${m.valor}" title="${m.valor}"><i class="fa-solid fa-envelope"></i> Correo${m.aclaracion ? ` (${m.aclaracion})` : ""}</button>`)
+                    .join("")}
             </div>
 
             ${mat.info_extra ? `<div class="materias-info-extra"><strong><i class="fa-solid fa-circle-info"></i></strong> ${mat.info_extra}</div>` : ""}
@@ -361,10 +401,9 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
 
-        const btnCopiarMail = modalInfo.querySelector(".btn-copiar-mail-materia");
-        if (btnCopiarMail) {
-            btnCopiarMail.addEventListener("click", async () => {
-                const mail = btnCopiarMail.dataset.mail;
+        modalInfo.querySelectorAll(".btn-copiar-mail-materia").forEach(btn => {
+            btn.addEventListener("click", async () => {
+                const mail = btn.dataset.mail;
                 if (!mail) return;
 
                 try {
@@ -380,7 +419,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     mostrarAvisoCopia("Correo copiado");
                 }
             });
-        }
+        });
     }
 
     // 5. EVENTOS GLOBALES
