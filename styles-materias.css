@@ -1,0 +1,38 @@
+/* Variables generales (Asegurate de tenerlas en tu CSS base, las repito por las dudas) */
+:root {
+    --primary: #0284c7;
+    --gray: #6b7280;
+    --light-gray: #e5e7eb;
+    --white: #ffffff;
+    --black: #111827;
+}
+
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f3f4f6; margin: 0; padding: 20px; color: var(--black); }
+.container { max-width: 1000px; margin: 0 auto; }
+
+/* Buscador y Pestañas */
+.buscador-container { position: relative; max-width: 600px; margin: 0 auto 2rem auto; }
+.buscador-container i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--gray); }
+#buscador-materias { width: 100%; box-sizing: border-box; padding: 12px 15px 12px 40px; font-size: 1.1rem; border: 2px solid var(--gray); border-radius: 25px; outline: none; transition: border-color 0.3s; }
+#buscador-materias:focus { border-color: var(--primary); }
+
+.tabs-carreras { display: flex; justify-content: center; gap: 10px; margin-bottom: 2rem; border-bottom: 2px solid var(--light-gray); flex-wrap: wrap; }
+.tab-btn { background: none; border: none; padding: 10px 20px; font-size: 1rem; font-weight: bold; color: var(--gray); cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.3s; }
+.tab-btn:hover, .tab-btn.activo { color: var(--primary); border-bottom-color: var(--primary); }
+
+/* Grilla y Tarjetas */
+.grilla-materias { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }
+.materia-card { background: var(--white); border: 1px solid var(--light-gray); border-radius: 8px; padding: 15px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
+.materia-card:hover { transform: translateY(-3px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); border-color: var(--primary); }
+.materia-card h3 { margin: 0 0 10px 0; color: var(--primary); font-size: 1.2rem; }
+.tags-container { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 10px; }
+.tag { font-size: 0.75rem; padding: 4px 10px; border-radius: 12px; background: var(--light-gray); color: var(--black); text-decoration: none; font-weight: bold; }
+
+/* Modal */
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: flex; justify-content: center; align-items: center; z-index: 1000; opacity: 1; transition: opacity 0.3s; }
+.modal-overlay.oculto { opacity: 0; pointer-events: none; }
+.modal-contenido { background: var(--white); padding: 30px; border-radius: 12px; width: 90%; max-width: 650px; max-height: 90vh; overflow-y: auto; position: relative; box-sizing: border-box; }
+.btn-cerrar-modal { position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #888; transition: color 0.2s; }
+.btn-cerrar-modal:hover { color: #d32f2f; }
+.selector-carrera-modal { margin: 15px 0; padding: 12px; background: #f8fafc; border-radius: 8px; border: 1px dashed #cbd5e1; display: flex; align-items: center; gap: 10px;}
+.selector-carrera-modal select { padding: 6px; border-radius: 4px; border: 1px solid #ccc; font-size: 0.95rem; }
