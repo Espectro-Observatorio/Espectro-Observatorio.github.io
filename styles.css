@@ -160,7 +160,82 @@ p a:hover, .card p a:hover { color: var(--black); }
 
 /* Tags de las Materias */
 .tags-container { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
-.tag { font-size: 0.75rem; padding: 4px 10px; border-radius: 12px; background: var(--gray); color: var(--black); font-weight: bold; border: 1px solid var(--light-gray); display: inline-flex; align-items: center; gap: 5px; }
+.tag {
+    display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px;
+    border-radius: 16px; border: 2px solid; font-size: 0.75rem; font-weight: 700;
+    line-height: 1.2; text-decoration: none; transition: all 0.2s ease;
+}
+.tag:hover { transform: translateY(-1px); }
+.materia-codigo { font-size: 0.9rem; color: #888; font-weight: normal; }
+
+.tag-promocion { background: rgba(22, 163, 74, 0.12); color: #15803d; border-color: #22c55e; }
+.tag-redictado { background: rgba(249, 115, 22, 0.13); color: #c2410c; border-color: #fb923c; }
+.tag-prae { background: rgba(37, 99, 235, 0.12); color: #1d4ed8; border-color: #3b82f6; }
+.tag-verano { background: rgba(245, 158, 11, 0.15); color: #b45309; border-color: #f59e0b; }
+.tag-link-web { background: rgba(2, 132, 199, 0.12); color: #0369a1; border-color: #0ea5e9; }
+.tag-link-drive { background: rgba(22, 163, 74, 0.12); color: #15803d; border-color: #22c55e; }
+.tag-link-programa { background: rgba(147, 51, 234, 0.12); color: #7e22ce; border-color: #a855f7; }
+.tag-mail-materia { background: rgba(71, 85, 105, 0.12); color: #334155; border-color: #64748b; }
+.btn-copiar-mail-materia { cursor: pointer; }
+
+.materias-feedback { text-align: center; width: 100%; color: #888; }
+.materias-feedback-error { color: #dc2626; }
+
+.materias-bloque-anio, .materias-bloque-cuatri { grid-column: 1 / -1; }
+.materias-bloque-anio { margin: 20px 0 8px 0; }
+.materias-bloque-anio h2 { margin: 0; color: var(--primary); font-size: 1.4rem; }
+.materias-bloque-cuatri { margin: 6px 0 2px 0; }
+.materias-bloque-cuatri h3 { margin: 0; color: var(--black); opacity: 0.85; font-size: 1.05rem; }
+
+.materias-modal-titulo { margin-top: 0; margin-bottom: 5px; color: var(--primary); }
+.materias-modal-cabecera { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 15px; gap: 10px; }
+.materias-modal-codigo { margin: 0; color: var(--black); font-weight: bold; opacity: 0.7; }
+.materias-tags-inline { margin-top: 0; }
+.materias-links { margin: 15px 0; display: flex; gap: 10px; flex-wrap: wrap; }
+.materias-info-extra { background: #fff9c4; padding: 10px; border-radius: 6px; margin: 10px 0 15px 0; border: 1px solid #fbc02d; color: #5f4b00; }
+
+.materias-seccion-titulo { margin-top: 0; margin-bottom: 10px; font-size: 1.1rem; color: var(--black); }
+.materias-seccion-horarios { margin-bottom: 15px; }
+.materias-plan-titulo { margin: 0 0 6px 0; color: var(--black); }
+.materias-plan-correlativas { margin: 0; font-size: 0.95rem; color: var(--black); }
+.materias-carrera-titulo { margin: 0 0 4px 0; color: var(--primary); }
+.materias-texto-suave { color: #6b7280; }
+
+.materias-separador { margin: 20px 0 15px 0; border: 0; border-top: 1px solid var(--gray); }
+.materias-separador-dashed { margin: 12px 0; border: 0; border-top: 1px dashed var(--gray); }
+
+.materias-selector-comision {
+    margin-bottom: 15px; background: var(--gray); padding: 10px; border-radius: 6px;
+    border: 1px solid var(--light-gray); display: flex; align-items: center; gap: 10px;
+}
+.materias-selector-label { font-weight: bold; color: var(--black); }
+.materias-selector-select {
+    padding: 6px 10px; border-radius: 4px; border: 1px solid var(--light-gray);
+    background: var(--white); color: var(--black); font-size: 0.95rem; cursor: pointer; outline: none; flex-grow: 1;
+}
+
+.materias-comision-titulo { color: var(--primary); display: block; margin-bottom: 10px; font-size: 1.1rem; }
+.materias-comision-detalle { color: var(--black); }
+.materias-comision-linea { margin-bottom: 6px; }
+.materias-comision-docentes { margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--gray); color: var(--black); }
+.materias-contacto { opacity: 0.8; }
+
+/* Estética similar a filtros de calendario, tamaño chico */
+.btn-correlativa {
+    display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px;
+    border-radius: 16px; border: 2px solid #f87171; background: rgba(239, 68, 68, 0.13);
+    color: #991b1b; font-size: 0.75rem; font-weight: 700; cursor: pointer;
+    transition: all 0.2s ease;
+}
+.btn-correlativa:hover { transform: translateY(-1px); background: rgba(239, 68, 68, 0.2); }
+
+.materias-toast-copia {
+    position: fixed; right: 18px; bottom: 18px; z-index: 9999;
+    padding: 8px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 700;
+    background: rgba(15, 23, 42, 0.9); color: #f8fafc; border: 1px solid rgba(148, 163, 184, 0.35);
+    opacity: 0; transform: translateY(6px); pointer-events: none; transition: all 0.2s ease;
+}
+.materias-toast-copia.visible { opacity: 1; transform: translateY(0); }
 
 
 /* ==========================================================================
@@ -486,9 +561,31 @@ body.modo-oscuro .btn-flecha { background: transparent; }
 body.modo-oscuro #buscador-materias { border-color: #444; background: var(--dark); color: var(--white); }
 body.modo-oscuro .materia-card { border-color: #333; border-left-color: #555; background: var(--gray); }
 body.modo-oscuro .materia-card:hover { border-left-color: var(--primary); }
-body.modo-oscuro .tag { background: #333; color: var(--white); border-color: #444; }
+body.modo-oscuro .tag { color: #f8fafc; }
+body.modo-oscuro .tag-promocion { background: rgba(34, 197, 94, 0.25); color: #bbf7d0; border-color: #4ade80; }
+body.modo-oscuro .tag-redictado { background: rgba(251, 146, 60, 0.26); color: #ffedd5; border-color: #fdba74; }
+body.modo-oscuro .tag-prae { background: rgba(59, 130, 246, 0.26); color: #dbeafe; border-color: #60a5fa; }
+body.modo-oscuro .tag-verano { background: rgba(245, 158, 11, 0.3); color: #fef3c7; border-color: #fbbf24; }
+body.modo-oscuro .tag-link-web { background: rgba(14, 165, 233, 0.26); color: #e0f2fe; border-color: #38bdf8; }
+body.modo-oscuro .tag-link-drive { background: rgba(34, 197, 94, 0.24); color: #dcfce7; border-color: #4ade80; }
+body.modo-oscuro .tag-link-programa { background: rgba(168, 85, 247, 0.26); color: #f3e8ff; border-color: #c084fc; }
+body.modo-oscuro .tag-mail-materia { background: rgba(148, 163, 184, 0.24); color: #e2e8f0; border-color: #94a3b8; }
+body.modo-oscuro .materia-codigo { color: #c0c0c0; }
 body.modo-oscuro .caja-info-materia { background: #1a1a1a; border-left-color: var(--primary); }
 body.modo-oscuro .caja-comision { background: var(--dark); border-color: #333; }
+body.modo-oscuro .materias-selector-comision { background: #1f1f1f; border-color: #333; }
+body.modo-oscuro .materias-selector-select { background: var(--dark); border-color: #444; color: var(--white); }
+body.modo-oscuro .materias-selector-select,
+body.modo-oscuro .materias-selector-select option,
+body.modo-oscuro .materias-selector-select optgroup {
+    color: #ffffff !important;
+    background-color: #000 !important;
+}
+body.modo-oscuro .materias-texto-suave { color: #a3a3a3; }
+body.modo-oscuro .materias-info-extra { background: rgba(250, 204, 21, 0.15); color: #fde68a; border-color: rgba(250, 204, 21, 0.35); }
+body.modo-oscuro .btn-correlativa { border-color: #fca5a5; color: #fee2e2; background: rgba(248, 113, 113, 0.28); }
+body.modo-oscuro .btn-correlativa:hover { background: rgba(248, 113, 113, 0.36); }
+body.modo-oscuro .materias-toast-copia { background: rgba(2, 6, 23, 0.92); border-color: rgba(148, 163, 184, 0.45); color: #ffffff; }
 
 /* Calendarios en Modo Oscuro */
 body.modo-oscuro .cal-vacio-fijo, body.modo-oscuro .cal-dia, body.modo-oscuro .cal-horas { background: var(--dark); }
