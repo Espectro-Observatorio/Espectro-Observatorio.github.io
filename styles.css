@@ -196,7 +196,7 @@ p a:hover, .card p a:hover { color: var(--black); }
 
 .materias-seccion-titulo { margin-top: 0; margin-bottom: 10px; font-size: 1.1rem; color: var(--black); }
 .materias-seccion-horarios { margin-bottom: 15px; }
-.materias-plan-titulo { margin: 0 0 6px 0; color: var(--black); }
+.materias-plan-titulo { margin: 0 0 6px 0; color: var(--black); text-align: left; }
 .materias-plan-correlativas { margin: 0; font-size: 0.95rem; color: var(--black); }
 .materias-carrera-titulo { margin: 0 0 4px 0; color: var(--primary); }
 .materias-texto-suave { color: #6b7280; }
